@@ -32,6 +32,10 @@ The rules are in [`rules/core/`](rules/core/), one chapter per file, starting wi
 army is in [`rules/armies/`](rules/armies/). The engine's charts are checked against these chapters by
 `src/rules/rules.test.js`, so the book and the game cannot drift apart.
 
+Not everything is in yet: a few magic weapons (18 of 119) have an extra effect from their rule text that the game
+does not apply, such as the Thundermace's blast or the Reaver Bow's extra shots. They still fight with their printed
+Strength, armour penalty and special rules. Each one is marked "not in yet" in the `src/rules/*Items.js` files.
+
 ## The code
 
 Plain JavaScript modules, no framework. For how the pieces fit together, read
