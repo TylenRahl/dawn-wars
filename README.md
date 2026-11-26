@@ -36,6 +36,27 @@ Not everything is in yet: a few magic weapons (18 of 119) have an extra effect f
 does not apply, such as the Thundermace's blast or the Reaver Bow's extra shots. They still fight with their printed
 Strength, armour penalty and special rules. Each one is marked "not in yet" in the `src/rules/*Items.js` files.
 
+| Army | Magic weapon | What is not in yet |
+|---|---|---|
+| Hornkin Herds | Axe of Men | Terror after killing a character in a challenge |
+| Hornkin Herds | Hunter's Spear | Through & Through |
+| Gutlords | Thundermace | its Thunderstrike blast, used instead of attacking |
+| Ilthari Realms | Bow of the Seafarer | Through & Through |
+| Ilthari Realms | Reaver Bow | one shot for each of the wielder's Attacks (it fires one) |
+| Lornefolk of Lorne Wood | Bow of Lorne | one shot for each of the wielder's Attacks (it fires one) |
+| Lornefolk of Lorne Wood | Sereth's Bane | its single re-roll |
+| Lornefolk of Lorne Wood | the Smith's Wrath | its once-a-game bolt-thrower shot |
+| Vhar | Whip of Agony | the lasting -1 Toughness on whoever it wounds |
+| Sand Kings of Kheshet | Destroyer of Eternities | its D6 scything hits, used instead of attacking |
+| Sand Kings of Kheshet | The Conqueror's Blade | Killing Blow on a 5 in a challenge, and its 100 victory points |
+| Sand Kings of Kheshet | Maatkhar's Blades of Justice | +1 Attack for each enemy rank |
+| Sand Kings of Kheshet | The Blessed Blade of Sharu | the lasting -1 To Hit on whoever it wounds |
+| Ashforged | Dark Maul | its Strength test for one more Wound |
+| Jade Dominion of Shen | The Sword of Reason | Killing Blow on a 5 |
+| Jade Dominion of Shen | The Brazen Blade | no Ward or Regeneration save against a natural 6 |
+| Jade Dominion of Shen | The Wrath of Lan Yao | no Regeneration save against it |
+| Jade Dominion of Shen | Sun & Moon Blades | its parry of a Killing Blow |
+
 ## The code
 
 Plain JavaScript modules, no framework. For how the pieces fit together, read
