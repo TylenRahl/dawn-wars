@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dawn Wars — Broken Past</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Barlow+Condensed:wght@500;600;700&display=swap">
+<link rel="stylesheet" href="/src/shared/pips.css">
+<link rel="stylesheet" href="./src/ui/dw.css">
+<link rel="stylesheet" href="./src/ui/builder.css">
+<link rel="stylesheet" href="./src/ui/setup.css">
+</head>
+<body>
+<!-- DAWN WARS, BROKEN PAST: the game's main page. The menu, the army lists, the battle setup and the battle screen
+     are sections here, shown one at a time by src/main.js. Every name the player sees goes through
+     src/rules/displayNames.js. The rules are written up in rules/core/*.md. -->
+
+<!-- .ow-intro hides the title and buttons from the first paint: the intro brings them in (main.js takes it off when no intro plays) -->
+<section id="menu" class="screen ow-intro">
+  <div class="title"><em>DAWN WARS</em>Broken Past</div>
+  <div class="subtitle">Hotseat &middot; both generals at one keyboard</div>
+  <nav class="menu-nav">
+    <button id="m-battle" class="big primary">Battle<span>pick two armies and fight</span></button>
+    <button id="m-lists" class="big">Army Lists<span>build and save</span></button>
+    <button id="m-help" class="big">How to Play<span>the turn, combat, magic, characters</span></button>
+>>>
+
+  </nav>
+</section>
+
+<section id="lists" class="screen" hidden></section>
+<section id="setup" class="screen" hidden></section>
+<section id="help" class="screen" hidden></section>
+
+<!-- THE BATTLE SCREEN: the table fills the window, with metal plates over its edges. Top left the turn card and the phase
+     stepper; bottom left the unit card; right the guide, questions and unit buttons; bottom right
+     the End button; bottom centre the roll log. Test scripts click these ids, so keep them. -->
+<section id="battle" hidden>
+  <div id="table-wrap"><div id="table"></div></div>
+  <div id="turn-col">
+    <div id="phase-state" class="plate"><div id="phase-turn"></div><div id="phase-name"></div></div>
+    <ol id="stepper"></ol>
+  </div>
+  <div id="corner">
+    <button id="b-help" title="How to play this screen">?</button>
+    <button id="b-menu" title="Leave the battle">Menu</button>
+  </div>
+  <aside id="side" class="plate">
+    <div id="guide"></div>
+    <div id="prompt"></div>
+    <div id="actions"></div>
+  </aside>
+  <div id="unit-card" class="plate"></div>
+  <footer id="log-wrap" class="plate">
+    <button id="log-toggle" title="Show or hide the roll log">Roll log</button>
+    <div id="log-scroll"><div id="log"></div></div>
+  </footer>
+  <div id="dice-strip" class="plate" hidden></div>
+  <div id="phase-buttons"></div>
+</section>
+
+<script type="module" src="./src/main.js"></script>
+</body>
+</html>

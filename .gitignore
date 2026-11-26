@@ -1,0 +1,8 @@
+node_modules
+dist/
+*.mp4
+*.log
+.DS_Store
+
+# The songs are not part of the repository (see CREDITS.md); copies put back locally stay local
+sound_screen/**/*.mp3

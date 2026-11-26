@@ -1,0 +1,311 @@
+/* Dawn Wars, Broken Past — the page's look: the colour tokens, the menu, the battle screen's plates,
+   the tutorial, the dice strip, the intro and the film. Loaded by index.html;
+   builder.css and setup.css hold the Army Lists and Battle setup screens. */
+:root {
+  /* ONE LOOK FOR EVERY ARMY. Blackened iron plates, brass trim,
+     parchment ink. Blue and red mark the two SIDES only (outlines, the turn card's edge); they
+     never re-skin the page. */
+  --bg: #12100c;
+  --panel: #221d17;
+  --panel-2: #2c251d;
+  --ink: #efe3c8;
+  --ink-dim: #a8997b;
+  --gold: #d2a94b;            /* brass: the accent */
+  --brass-2: #8c6a27;
+  --red: #b3392b;
+  --blue: #3c6fb3;
+  --line: #43392b;
+  --ok: #8cc06f;
+  --bad: #e2675a;
+  --felt: #3b4a35;
+  --side-blue: #79a6e6;
+  --side-red: #e0705f;
+  --plate: linear-gradient(160deg, #2c2720, #1d1a15 55%, #171410);
+  --cut: 14px;
+  --plate-shape: polygon(0 0, calc(100% - var(--cut)) 0, 100% var(--cut), 100% 100%, var(--cut) 100%, 0 calc(100% - var(--cut)));
+  --display: 'Cinzel', Georgia, 'DejaVu Serif', serif;
+  --label: 'Barlow Condensed', 'Arial Narrow', system-ui, sans-serif;
+  /* the names the shared action pips (src/shared/pips.css) read */
+  --accent: var(--gold); --accent2: #ecc466;
+  --bg2: #1d1a15; --bg3: #2c251d; --border2: #5a4c37;
+  --text: var(--ink); --muted: var(--ink-dim);
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; height: 100%; background: var(--bg); color: var(--ink);
+  font: 15px/1.35 Georgia, 'DejaVu Serif', serif; }
+button, select, input { font: inherit; color: var(--ink); background: var(--panel-2);
+  border: 1px solid var(--line); border-radius: 4px; padding: 6px 10px; }
+button { cursor: pointer; }
+button:hover:not(:disabled) { border-color: var(--gold); }
+button:disabled { opacity: .45; cursor: default; }
+button.primary { background: linear-gradient(160deg, #5a4318, #3d2d10); border-color: var(--gold); }
+h2, h3 { font-family: var(--display); letter-spacing: .5px; }
+[hidden] { display: none !important; }
+
+.screen { min-height: 100%; padding: 32px 16px; display: flex; flex-direction: column; align-items: center; }
+.title { font-family: var(--display); font-weight: 700; font-size: 48px; letter-spacing: 2px; text-align: center; color: var(--gold); margin-top: 6vh; }
+.title em { display: block; font-style: normal; font-size: 22px; letter-spacing: 10px; color: var(--ink-dim); }
+.subtitle { color: var(--ink-dim); margin: 6px 0 32px; }
+.menu-nav { display: flex; flex-direction: column; gap: 12px; width: min(360px, 100%); }
+.big { display: flex; flex-direction: column; align-items: center; padding: 14px; font-size: 20px;
+  text-decoration: none; color: var(--ink); background: var(--panel-2); border: 1px solid var(--line); border-radius: 6px; }
+.big span { font-size: 13px; color: var(--ink-dim); }
+a.big { font-size: 15px; }
+
+/* army lists */
+.lists-wrap { width: min(1100px, 100%); }
+/* (the builder's own rules are in builder.css; .lists-wrap and .panel are the battle set-up screen's) */
+.panel { background: var(--panel); border: 1px solid var(--line); border-radius: 6px; padding: 10px; }
+.problems { color: var(--bad); font-size: 13px; }
+.ok { color: var(--ok); }
+.saved { display: flex; flex-wrap: wrap; gap: 6px; }
+
+/* ---- the battle screen: the table under everything, plates over its edges ---------------- */
+/* THE NOTCHED BEVEL, IN BRASS AND IRON: dark plates with four small cut corners, a glowing light bar on the top and bottom edges, hairlines
+   across the corners; the turn card and phase stepper top left, the roll log a pull-out drawer on the right, the
+   questions and buttons under it, the big End button bottom right, the unit card bottom left, the dice bottom
+   centre. The light bars are brass. */
+#battle { position: fixed; inset: 0; overflow: hidden; background: #0e0c0a; }
+#battle {
+  --cut: 10px;
+  --plate: linear-gradient(165deg, #2d2820, #1d1a15 55%, #16130f);
+  --plate-shape: polygon(var(--cut) 0, calc(100% - var(--cut)) 0, 100% var(--cut), 100% calc(100% - var(--cut)), calc(100% - var(--cut)) 100%, var(--cut) 100%, 0 calc(100% - var(--cut)), 0 var(--cut));
+  --steel: #b9a988;                 /* the hairlines and the quiet labels */
+  --light: #f3d58a;                 /* the light bars */
+  --glow: rgba(240, 190, 90, .32);
+  --lit: #d2a94b; --lit-2: #7a5a1e; /* the current step and the End button */
+  --drawer-w: min(24rem, 30vw);
+  --drawer-h: min(34vh, 320px);
+  color: var(--ink);
+}
+/* How much of the table's edge the plates cover; view/board.js reads these so "Home" fits the
+   table into the open middle, not under a plate. */
+#table-wrap { position: absolute; inset: 0; --fit-left: 380px; --fit-right: 420px; --fit-top: 16px; --fit-bottom: 20px; }
+#table { position: absolute; inset: 0; }
+
+/* a plate: dark metal, four cut corners, a light bar top left and bottom right, hairlines across the cuts */
+.plate {
+  position: absolute; z-index: 5; background: var(--plate); clip-path: var(--plate-shape); color: var(--ink);
+  scrollbar-color: #5a4c37 #16130f; scrollbar-width: thin;
+}
+.plate::after {
+  content: ''; position: absolute; inset: 0; pointer-events: none;
+  background:
+    linear-gradient(var(--light), var(--light)) calc(var(--cut) + 6px) 0 / 54px 2px no-repeat,
+    linear-gradient(var(--glow), transparent) calc(var(--cut) + 2px) 0 / 62px 7px no-repeat,
+    linear-gradient(var(--light), var(--light)) calc(100% - var(--cut) - 6px) 100% / 54px 2px no-repeat,
+    linear-gradient(transparent, var(--glow)) calc(100% - var(--cut) - 2px) 100% / 62px 7px no-repeat,
+    linear-gradient(45deg, transparent calc(50% - 1px), var(--steel) 50%, transparent calc(50% + 1px)) 0 0 / var(--cut) var(--cut) no-repeat,
+    linear-gradient(135deg, transparent calc(50% - 1px), var(--steel) 50%, transparent calc(50% + 1px)) 100% 0 / var(--cut) var(--cut) no-repeat,
+    linear-gradient(135deg, transparent calc(50% - 1px), var(--steel) 50%, transparent calc(50% + 1px)) 0 100% / var(--cut) var(--cut) no-repeat,
+    linear-gradient(45deg, transparent calc(50% - 1px), var(--steel) 50%, transparent calc(50% + 1px)) 100% 100% / var(--cut) var(--cut) no-repeat;
+}
+
+/* top left: the turn card — whose turn, then the phase and step. The bar on its top edge is the side's colour. */
+#turn-col { position: absolute; left: 0; top: 14px; z-index: 5; display: flex; flex-direction: column; gap: 12px; align-items: flex-start; }
+#turn-col #phase-state { position: relative; }
+#phase-state { min-width: 13rem; max-width: 18rem; padding: 12px 30px 12px 18px;
+  clip-path: polygon(0 0, calc(100% - var(--cut)) 0, 100% var(--cut), 100% 100%, 0 100%);
+  background: linear-gradient(var(--lit), var(--lit)) 0 0 / 60px 3px no-repeat, var(--plate); }
+#phase-state.side-blue { background: linear-gradient(var(--side-blue), var(--side-blue)) 0 0 / 60px 3px no-repeat, var(--plate); }
+#phase-state.side-red { background: linear-gradient(var(--side-red), var(--side-red)) 0 0 / 60px 3px no-repeat, var(--plate); }
+#phase-state::after { display: none; }
+#phase-turn { font: 600 12px/1.2 var(--label); letter-spacing: 3px; text-transform: uppercase; color: var(--steel); }
+#phase-state.side-blue #phase-turn { color: var(--side-blue); }
+#phase-state.side-red #phase-turn { color: var(--side-red); }
+#phase-name { font: 700 18px/1.15 var(--display); letter-spacing: 1.5px; color: #f6ecd6; margin-top: 4px; }
+
+/* left edge: the four phases of a turn, the current one lit, with its step under it.
+   It shows where the turn is and decides nothing; it is not clickable. */
+#stepper { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 8px; }
+#stepper li { width: 11rem; padding: 10px 30px 10px 12px; display: flex; flex-direction: column;
+  background: rgba(29, 26, 21, .92); color: var(--steel);
+  font: 700 17px/1.1 var(--label); letter-spacing: 2.5px; text-transform: uppercase;
+  clip-path: polygon(0 0, calc(100% - 14px) 0, 100% 50%, calc(100% - 14px) 100%, 0 100%);
+  transition: width .18s ease, background .18s; }
+#stepper li .n { display: flex; align-items: center; gap: 10px; }
+#stepper li .n::before { content: attr(data-n); flex: none; width: 22px; height: 22px; display: grid; place-items: center;
+  border: 1px solid currentColor; font-size: 13px; letter-spacing: 0; }
+#stepper li[data-state="done"] .n::before { content: '\2713'; background: var(--steel); color: #16130f; border-color: var(--steel); }
+#stepper li[data-state="todo"] { opacity: .7; }
+#stepper li[data-state="current"] { width: 14rem; color: #1a140b; background: linear-gradient(90deg, var(--lit-2), var(--lit)); }
+#stepper li .step { font: 600 13px/1.2 var(--label); letter-spacing: 1px; text-transform: none; margin: 4px 0 0 32px; }
+
+/* top right: help and Menu */
+#corner { position: absolute; right: 12px; top: 12px; z-index: 6; display: flex; gap: 8px; }
+#corner button { background: var(--plate); border: 0; border-radius: 0; padding: 7px 16px;
+  font: 600 15px var(--label); letter-spacing: 2px; text-transform: uppercase; color: #e6dcc6;
+  clip-path: polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px); }
+#corner button:hover { background: linear-gradient(160deg, #3d3528, #262119); color: #fff; }
+
+/* right edge: the roll log as a pull-out drawer. Open by default; its tab slides it off the right edge and back.
+   The plate is the ::before, so the tab on its left edge can stand outside the cut shape. */
+#log-wrap { top: 58px; right: 0; width: var(--drawer-w); height: var(--drawer-h); padding: 0 0 10px;
+  display: flex; flex-direction: column; z-index: 6;
+  background: none; clip-path: none; overflow: visible; isolation: isolate; transition: transform .26s ease; }
+#log-wrap::before { content: ''; position: absolute; inset: 0; z-index: -1; background: var(--plate);
+  clip-path: polygon(0 0, calc(100% - var(--cut)) 0, 100% var(--cut), 100% 100%, var(--cut) 100%, 0 calc(100% - var(--cut))); }
+#log-wrap.folded { transform: translateX(100%); }
+#log-wrap::after { clip-path: polygon(0 0, calc(100% - var(--cut)) 0, 100% var(--cut), 100% 100%, var(--cut) 100%, 0 calc(100% - var(--cut))); }
+#log-wrap > :not(#log-toggle) { margin-top: 14px; }
+#log-toggle { position: absolute; left: -30px; top: 14px; width: 30px; height: 112px; padding: 0; margin: 0;
+  display: grid; place-items: center; z-index: 2; border: 0; border-radius: 0;
+  background: var(--plate); color: var(--steel); box-shadow: inset -3px 0 0 var(--lit);
+  writing-mode: vertical-rl; transform: rotate(180deg);
+  font: 700 13px var(--label); letter-spacing: 3px; text-transform: uppercase;
+  clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%); }
+#log-wrap.folded #log-toggle { color: #fff; }
+#log-toggle:hover { color: #fff; }
+#log-scroll { flex: 1; min-height: 0; overflow-y: auto; padding: 0 16px 0 18px; font: 13.5px/1.4 'DejaVu Sans Mono', monospace; color: #f2ead8; }
+/* a closed drawer is off screen: nothing in it may be tabbed into or clicked */
+#log-wrap.folded #log-scroll { visibility: hidden; }
+#log div { white-space: pre-wrap; }
+#log > div + div { border-top: 1px solid rgba(255, 255, 255, .07); padding-top: 4px; margin-top: 4px; }
+#log .h { color: var(--gold); margin-top: 6px; }
+#log .roll { color: var(--ink); border-left: 3px solid var(--lit); padding-left: 8px; }
+#log .bad { color: var(--bad); }
+#log .good { color: var(--ok); }
+
+/* bottom right, under the drawer: the guide, the questions the rules ask, the selected unit's buttons.
+   It sits on the End button and grows upward; with the drawer folded it may grow to the top. */
+#side { right: 20px; bottom: 92px; width: var(--drawer-w); padding: 16px 18px 18px; overflow-y: auto;
+  max-height: calc(100vh - 58px - var(--drawer-h) - 14px - 92px); }
+#battle:has(#log-wrap.folded) #side { max-height: calc(100vh - 58px - 92px); }
+#actions { display: flex; flex-wrap: wrap; gap: 6px; margin: 8px 0; }
+#actions button { flex: 1 1 45%; }
+#side button { border-radius: 0; background: #2c261e; border: 1px solid #4a3f2e;
+  clip-path: polygon(6px 0, 100% 0, 100% calc(100% - 6px), calc(100% - 6px) 100%, 0 100%, 0 6px); }
+#side button:hover:not(:disabled) { background: #3a3226; border-color: var(--gold); color: #fff; }
+#prompt { font-size: 14px; }
+#prompt:not(:empty) { border-left: 3px solid var(--lit); background: rgba(210, 169, 75, .08); padding: 6px 10px; margin: 6px 0; }
+#prompt .q { margin: 6px 0; color: var(--light); }
+#prompt button { margin: 2px 4px 2px 0; }
+#guide { padding: 0 0 8px; margin-bottom: 6px; border-bottom: 1px solid rgba(255, 255, 255, .1); font-size: 13px; }
+#guide .guide-head { display: flex; justify-content: space-between; align-items: center; color: var(--steel);
+  font: 700 13px var(--label); letter-spacing: 3px; text-transform: uppercase; }
+#guide .guide-toggle { font-size: 11px; padding: 0 6px; }
+#guide .guide-who { font-weight: bold; margin: 4px 0 2px; }
+#guide .guide-text { color: var(--ink); margin: 2px 0 6px; line-height: 1.35; }
+#guide .guide-wait { color: var(--light); font-weight: bold; }
+#guide .guide-sub, #guide .guide-none { color: var(--ink-dim); margin: 4px 0; }
+#guide .guide-list { display: flex; flex-direction: column; gap: 3px; max-height: 220px; overflow-y: auto; }
+#guide .guide-row { display: flex; flex-direction: column; align-items: flex-start; text-align: left; padding: 3px 6px; }
+#guide .guide-row.sel { border-color: var(--gold); }
+#guide .guide-unit { font-weight: bold; }
+#guide .guide-what { font-size: 12px; color: var(--ink-dim); }
+
+/* bottom left: the selected unit */
+#unit-card { left: 20px; bottom: 20px; width: 22rem; max-height: calc(100vh - 21rem); min-height: 60px; overflow-y: auto; padding: 14px 18px 16px; }
+#unit-card h3 { margin: 2px 0 4px; font: 700 22px/1.15 var(--display); letter-spacing: 1.5px; }
+#unit-card table { border-collapse: collapse; font-size: 12px; margin: 4px 0; }
+#unit-card td, #unit-card th { border: 1px solid var(--line); padding: 1px 4px; text-align: center; }
+#unit-card .rules { font-size: 12px; color: var(--ink-dim); }
+#unit-card > div:nth-of-type(1) { font: 600 13px var(--label); letter-spacing: 1px; color: var(--steel); text-transform: uppercase; }
+
+/* bottom right: the End button — the current step's own button, drawn big */
+#phase-buttons { position: absolute; right: 20px; bottom: 20px; z-index: 6; display: flex; gap: 6px; }
+#phase-buttons button { padding: 14px 34px 14px 38px; border: 0; border-radius: 0; color: #1a140b;
+  font: 700 22px var(--label); letter-spacing: 4px; text-transform: uppercase; white-space: nowrap; max-width: var(--drawer-w); overflow: hidden; text-overflow: ellipsis;
+  background: linear-gradient(160deg, var(--lit), var(--lit-2));
+  clip-path: polygon(0 0, calc(100% - 16px) 0, 100% 16px, 100% 100%, 16px 100%, 0 calc(100% - 16px)); }
+#phase-buttons button:hover:not(:disabled) { background: linear-gradient(160deg, #ecc466, #8c6a27); }
+#phase-buttons button:active { transform: translateY(1px); }
+/* Undo move (ui/phases.js undoMove): beside the End button, in the plate's grey, not the gold */
+#phase-buttons button.undo { align-self: flex-end; padding: 10px 20px; font-size: 15px; letter-spacing: 2px; color: #e6dcc6; background: var(--plate); }
+#phase-buttons button.undo:hover { background: linear-gradient(160deg, #3d3528, #262119); color: #fff; }
+
+.side-red { color: var(--side-red); } .side-blue { color: var(--side-blue); }
+#help-box { position: absolute; top: 52px; left: 50%; transform: translateX(-50%); z-index: 8; max-width: 540px; background: var(--panel);
+  border: 1px solid var(--gold); padding: 10px 14px; font-size: 14px; }
+#help-box h4 { margin: 4px 0; color: var(--gold); font-family: var(--display); }
+#help-box ul { margin: 4px 0 8px 18px; padding: 0; }
+
+/* How to Play (ui/tutorial.js) */
+.tut-wrap { display: grid; grid-template-columns: 260px 1fr; gap: 16px; max-width: 1100px; margin: 24px auto; max-height: calc(100vh - 48px); }
+.tut-nav { display: flex; flex-direction: column; gap: 4px; overflow-y: auto; }
+.tut-nav h2 { color: var(--gold); margin: 4px 0 8px; }
+.tut-nav button { text-align: left; }
+.tut-nav button.on { border-color: var(--gold); color: var(--gold); }
+.tut-page { overflow-y: auto; font-size: 15px; line-height: 1.5; padding-right: 8px; }
+.tut-page h3 { color: var(--gold); margin-top: 4px; }
+.tut-page li { margin: 3px 0; }
+.tut-foot { display: flex; justify-content: space-between; gap: 8px; margin: 16px 0 8px; }
+.tut-overlay { position: absolute; inset: 40px; z-index: 6; background: var(--panel); border: 1px solid var(--gold); border-radius: 8px; overflow: hidden; }
+.tut-overlay .tut-wrap { margin: 12px; max-height: calc(100vh - 110px); max-width: none; }
+@media (max-width: 700px) { .tut-wrap { grid-template-columns: 1fr; margin: 12px 16px; } }
+
+/* a unit's stat lines, saves and weapons (ui/unitStats.js): the builder and the battle's unit card */
+.unit-stats { margin: 4px 0 6px; font-size: 12px; }
+.unit-stats table { border-collapse: collapse; margin: 3px 0; }
+.unit-stats td, .unit-stats th { border: 1px solid var(--line); padding: 1px 5px; text-align: center; }
+.unit-stats th { color: var(--gold); font-weight: normal; }
+.unit-stats .us-name, .us-weapons td:first-child, .us-weapons td:last-child { text-align: left; }
+.unit-stats .us-sv { font-weight: bold; color: var(--gold); }
+.unit-stats .us-saves { color: var(--ink); margin: 2px 0; }
+.unit-stats .us-note { color: var(--ink-dim); }
+
+/* the action pips (src/shared/pips.css) stand above the plates: a unit near the table's edge has its
+   pips over the stepper or the side panel, never hidden under them */
+#action-pips, #pip-tip { z-index: 7; }
+
+/* bottom centre, over the roll log: the latest dice and the log line they belong to (ui/diceStrip.js).
+   Static faces: no tumbling. Green ring passed, red ring failed. */
+#dice-strip { left: calc(22rem + 40px); right: calc(var(--drawer-w) + 40px); bottom: 20px; max-height: 40vh; overflow-y: auto;
+  padding: .8rem 1.2rem 1rem; color: var(--ink);
+  background: linear-gradient(var(--lit), var(--lit)) 0 0 / 60px 3px no-repeat, linear-gradient(var(--lit), var(--lit)) 100% 100% / 60px 3px no-repeat, var(--plate); }
+#dice-strip .dice { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 14px; }
+#dice-strip .roll { display: inline-flex; flex-wrap: wrap; align-items: center; gap: 4px; }
+#dice-strip .note { font: 700 16px var(--label); letter-spacing: 2px; color: var(--steel); margin-left: 4px; }
+#dice-strip .note b { color: #fff; font-size: 20px; }
+#dice-strip .note .ok { color: var(--ok); } #dice-strip .note .bad { color: var(--bad); }
+#dice-strip .what { margin-top: 6px; font-size: 13px; color: var(--ink); line-height: 1.3; }
+#dice-strip .die {
+  display: inline-grid; grid-template-columns: repeat(3, 1fr); gap: 1px;
+  width: 38px; height: 38px; padding: 5px; box-sizing: border-box;
+  background: #f2ead6; border-radius: 5px; border: 1px solid #0008; vertical-align: middle;
+}
+#dice-strip .die i { display: block; }
+#dice-strip .die i.pip { background: #1a140b; border-radius: 50%; }
+#dice-strip .die.passed { box-shadow: 0 0 0 2px var(--ok); }
+#dice-strip .die.failed { box-shadow: 0 0 0 2px var(--bad); opacity: .75; }
+#dice-strip .die.word { display: inline-flex; width: auto; padding: 0 8px; align-items: center; color: #1a140b;
+  font: 700 14px var(--label); letter-spacing: 1px; }
+
+/* THE INTRO (ui/intro.js): the world under the menu, a third of the screen's
+   resolution in hard pixels. The title waits until CUES.title (10.5 s), the buttons until the end. */
+.dw-intro-canvas { position: fixed; inset: 0; width: 100%; height: 100%; display: block; z-index: 0;
+  image-rendering: pixelated; background: #000; }
+body:has(.dw-intro-canvas) #menu { position: relative; z-index: 1; background: transparent; }
+#menu.ow-intro { pointer-events: none; }
+#menu.ow-intro .title { opacity: 0; }
+#menu.ow-intro-title .title { opacity: 1; transition: opacity 2.5s ease-out;
+  text-shadow: 0 2px 0 #2a1c10, 0 0 18px rgba(0,0,0,.65); }
+#menu.ow-intro .subtitle, #menu.ow-intro .menu-nav { opacity: 0; transform: translateY(-70vh); }
+#menu .subtitle, #menu .menu-nav { transition: opacity .6s, transform 1.4s cubic-bezier(.2,1.4,.4,1); }
+.dw-intro-hi { image-rendering: auto; background: transparent; opacity: 0; }
+.dw-intro-skip { position: fixed; right: 16px; bottom: 16px; z-index: 3; opacity: .6; }
+.dw-intro-skip:hover { opacity: 1; }
+.dw-intro-gate { position: fixed; left: 50%; top: 50%; transform: translate(-50%, -50%); z-index: 3;
+  font: 700 18px var(--label); letter-spacing: 4px; text-transform: uppercase; color: var(--gold);
+  animation: ow-gate 1.6s ease-in-out infinite alternate; }
+@keyframes ow-gate { from { opacity: .35 } to { opacity: 1 } }
+
+/* THE TEST MATCH FILM (ui/film.js, ?film): a pointer, a caption bar at the top centre, title and closing cards.
+   The help button is hidden in film mode. */
+html.dw-film #b-help { display: none; }
+#film-cursor { position: fixed; left: 0; top: 0; z-index: 100; pointer-events: none; margin: -3px 0 0 -3px; filter: drop-shadow(0 2px 3px rgba(0,0,0,.6)); }
+#film-cursor.click::after { content: ''; position: absolute; left: -10px; top: -10px; width: 26px; height: 26px; border-radius: 50%;
+  border: 2px solid #f3d58a; animation: film-click .5s ease-out forwards; }
+@keyframes film-click { from { transform: scale(.4); opacity: 1 } to { transform: scale(1.6); opacity: 0 } }
+#film-caption { position: fixed; left: 50%; top: 18px; transform: translateX(-50%); z-index: 90; pointer-events: none;
+  max-width: min(58vw, 900px); padding: 12px 26px 13px; text-align: center; color: #f6ecd6;
+  font: 600 22px/1.3 'Barlow Condensed', 'Arial Narrow', sans-serif; letter-spacing: 1px;
+  background: linear-gradient(#f3d58a, #f3d58a) 0 0 / 60px 3px no-repeat, linear-gradient(165deg, rgba(45,40,32,.96), rgba(22,19,15,.96));
+  clip-path: polygon(10px 0, calc(100% - 10px) 0, 100% 10px, 100% calc(100% - 10px), calc(100% - 10px) 100%, 10px 100%, 0 calc(100% - 10px), 0 10px);
+  opacity: 0; transition: opacity .25s; }
+#film-caption.on { opacity: 1; }
+#film-card { position: fixed; inset: 0; z-index: 95; display: grid; place-content: center; text-align: center; gap: 14px;
+  background: radial-gradient(ellipse at 50% 45%, #2a2219, #0b0907 75%); opacity: 0; pointer-events: none; transition: opacity .5s; }
+#film-card.on { opacity: 1; }
+#film-card .t { font: 700 64px/1.1 'Cinzel', Georgia, serif; letter-spacing: 4px; color: #d2a94b; text-shadow: 0 3px 0 #2a1c10; }
+#film-card .s { font: 600 26px 'Barlow Condensed', sans-serif; letter-spacing: 3px; color: #e6dcc6; text-transform: uppercase; }

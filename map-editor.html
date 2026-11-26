@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Map Editor</title>
+<!-- THE MAP EDITOR: lay out terrain on a table and save it as a named map. The table and the terrain
+     are drawn by the game's own board (src/view/board.js), so a map looks
+     here as it will in battle. What a map is: src/rules/customMaps.js. Maps are saved in this browser (localStorage
+     'dw.customMaps'), can be exported to / imported from a .json file, and the Battle setup screen lists them under
+     Battlefield. The script is src/mapEditor/mapEditor.js. Under `npm run dev`: http://localhost:5175/map-editor.html -->
+<style>
+  html, body { margin: 0; height: 100%; background: #14110c; color: #e6dcc6; font: 14px/1.4 system-ui, sans-serif; }
+  body { display: grid; grid-template-columns: 1fr 360px; }
+  main { display: grid; grid-template-rows: auto 1fr; min-height: 0; min-width: 0; }
+  #bar { padding: 6px 12px; background: #1d1a14; border-bottom: 1px solid #3a3226; font-size: 12px; display: flex; gap: 18px; flex-wrap: wrap; color: #b8ad96; }
+  #bar b { color: #ecc466; font-weight: 600; }
+  #stage { position: relative; min-height: 0; overflow: hidden; }
+  #stage canvas { display: block; }
+  aside { background: #1d1a14; border-left: 1px solid #3a3226; padding: 12px 14px 40px; overflow-y: auto; }
+  h3 { margin: 14px 0 6px; font-size: 12px; color: #ecc466; text-transform: uppercase; letter-spacing: .08em; }
+  label { display: block; margin: 5px 0; }
+  input[type=text], input[type=number], select { font: inherit; background: #2a251c; color: #e6dcc6; border: 1px solid #5a4a2c; padding: 3px 6px; }
+  input[type=text] { width: 100%; box-sizing: border-box; }
+  input[type=number] { width: 70px; }
+  button { font: inherit; color: #e6dcc6; background: #2a251c; border: 1px solid #5a4a2c; padding: 4px 9px; cursor: pointer; margin: 2px 2px 2px 0; }
+  button:hover:not(:disabled) { background: #8c6a27; color: #fff; }
+  button.on { background: #8c6a27; border-color: #ecc466; color: #fff; }
+  button.primary { background: #b48a3a; color: #1a140b; border-color: #ecc466; font-weight: 600; }
+  button:disabled { opacity: .45; cursor: default; }
+  .sw { display: inline-block; width: 11px; height: 11px; margin-right: 6px; vertical-align: -1px; border: 1px solid #000; }
+  #kinds { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
+  #kinds button { text-align: left; }
+  .grid2 { display: grid; grid-template-columns: auto 1fr; gap: 4px 8px; align-items: center; }
+  #checks div { font-size: 13px; margin: 3px 0; padding-left: 8px; border-left: 3px solid #6a7a4a; }
+  #checks div.warn { border-color: #d05040; color: #ffb8a8; }
+  #checks .ok { color: #9fd08a; border-color: #6a9a4a; }
+  #status { margin-top: 8px; min-height: 1.4em; color: #9fd08a; }
+  .keys { font-size: 12px; color: #9a8f7a; }
+  a { color: #ecc466; }
+</style>
+</head>
+<body>
+<main>
+  <div id="bar"><span>Pointer: <b id="at">—</b></span><span id="hint">Pick a kind of terrain, then click the table to place it.</span></div>
+  <div id="stage"></div>
+</main>
+<aside>
+  <h3>Map</h3>
+  <label>Open <select id="open"></select></label>
+  <label>Name <input type="text" id="name" maxlength="60"></label>
+  <div class="grid2">
+    <span>Points</span><select id="points"><option>500</option><option>1000</option><option>1500</option><option>2000</option><option>2500</option><option>3000</option></select>
+  </div>
+  <label title="Every piece gets a twin turned half round the table's centre, so each side finds the same ground (as the named maps are made)"><input type="checkbox" id="mirror"> Mirror: each piece gets its twin on the other half</label>
+  <label title="Pieces move in half-inch steps"><input type="checkbox" id="snap" checked> Snap to ½"</label>
+
+  <h3>Add terrain</h3>
+  <div id="kinds"></div>
+
+  <h3>Selected piece</h3>
+  <div id="selected">Nothing selected. Click a piece on the table.</div>
+
+  <h3>Checks</h3>
+  <div id="checks"></div>
+
+  <h3>Save</h3>
+  <button id="save" class="primary">Save</button>
+  <button id="try" title="Save, then open a battle on this map with the two default armies">Try in a battle</button>
+  <button id="new">New map</button><br>
+  <button id="export">Export .json</button>
+  <button id="import">Import .json</button>
+  <button id="delete">Delete this map</button>
+  <input type="file" id="file" accept=".json,application/json" hidden>
+  <div id="status"></div>
+
+  <h3>Keys</h3>
+  <div class="keys">Click a piece to select it, drag to move it. <b>Q / E</b> turn it 15° (with Shift 5°). <b>[ / ]</b> narrower / wider, <b>- / =</b> shallower / deeper. <b>Arrows</b> nudge it ½". <b>D</b> duplicates, <b>Delete</b> removes. <b>Esc</b> or right-click lets go. Mouse wheel zooms, right-drag pans, <b>Home</b> shows the whole table, <b>Shift + drag</b> measures.<br><br>
+  Blue deploys along the near (bottom) edge, red along the far edge, 12" deep. The pale circle is 12" round the centre: the recommended set-up keeps terrain out of it.<br><br><a href="./index.html">Back to the game</a></div>
+</aside>
+<script type="module" src="./src/mapEditor/mapEditor.js"></script>
+</body>
+</html>
