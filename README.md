@@ -1,5 +1,7 @@
 # Dawn Wars, Broken Past
 
+**Play it in your browser: https://tylenrahl.github.io/dawn-wars/**
+
 A turn-based battle game of rank-and-file regiments for two players at one keyboard, played in the browser.
 Blocks of infantry and cavalry, monsters, war machines and wizards manoeuvre on a table measured in inches, charge,
 shoot, cast spells and fight in close combat until one side breaks and flees. Every result comes from six-sided dice.
