@@ -1,7 +1,7 @@
 // The Ashforged's magic items: what each one does in play, as a table of effects keyed by item id.
 // Exports CD_EFFECTS, which items.js merges into its EFFECTS table. No imports, so items.js can load it first.
 export const CD_EFFECTS = {
-  // Black Hammer of the Bull of Ash (its Killing Blow against the Flammable only is not in yet)
+  // Black Hammer of the Bull of Ash (its Killing Blow against the Flammable: combat.js)
   'black-hammer-of-the-bull-of-ash': { weapon: true },
   'dark-maul': { weapon: true }, // Dark Maul (its Strength test for one more Wound is not in yet)
   // Dagger of Malice: Frenzy and Hatred (all enemies), never lost

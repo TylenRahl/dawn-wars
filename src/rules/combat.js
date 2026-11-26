@@ -1298,7 +1298,8 @@ function strikeInner (game, a, b0, g0, I, afraidOfB, duel = null) {
   // round of combat (taken as the turn the combat began with a charge)
   // (whom it hates: orders.js hates — Hatred (X) from its own rules, its Order, a Witch Hunter...)
   // (The Soiled Tapestry: every enemy hates the unit carrying it)
-  const hated = !g.isMount && (hates(rulesOf(a), b) || itemFlag(b, 'soiled') || ((a.status.charged) && itemFlag(a, 'knightlyTemper', { personal: true })))
+  // (a magic weapon's own Hatred (X) counts too: The Sword of Hai Lun, Primeval Club)
+  const hated = !g.isMount && (hates([...rulesOf(a), ...(g.rules || [])], b) || itemFlag(b, 'soiled') || ((a.status.charged) && itemFlag(a, 'knightlyTemper', { personal: true })))
   // (Eternal Hatred: against Ilthari, in every round — not its mount)
   if (hated && (a.status.charged || b.status.charged || eternalHatred(a, b))) reroll(d => !hitOk(d), 'misses, Hatred')
   // magic items: Pearl Daggers, The Reeking Axe re-roll failed rolls To Hit
@@ -1445,7 +1446,9 @@ function strikeInner (game, a, b0, g0, I, afraidOfB, duel = null) {
   // Virtue of Heroism: unless using a magic weapon, Killing Blow and Monster Slayer
   const heroic = !g.isMount && !g.itemId && itemFlag(a, 'heroism', { personal: true })
   const slayer = (heroic || hasRule(a, 'Monster Slayer') || (g.rules || []).includes('Monster Slayer')) && monster
-  const kb = (((heroic || hasRule(a, 'Killing Blow') || (g.rules || []).includes('Killing Blow')) && /Infantry|Cavalry/.test(troopType(b).name) && !kbImmune) || slayer)
+  // (Black Hammer of the Bull of Ash: Killing Blow only when striking a model with the Flammable special rule)
+  const kbWeapon = (g.rules || []).includes('Killing Blow') || ((g.rules || []).includes('Killing Blow (Flammable units)') && hasRule(b, 'Flammable'))
+  const kb = (((heroic || hasRule(a, 'Killing Blow') || kbWeapon) && /Infantry|Cavalry/.test(troopType(b).name) && !kbImmune) || slayer)
   let killing = kb ? wounds.filter(d => d === 6).length : 0
   const killingRolled = killing
   const baneN = g.bane ? Number((g.bane.match(/\((\d+)/) || [])[1] || 1) : 0

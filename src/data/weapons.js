@@ -1675,7 +1675,7 @@ export const WEAPONS = {
   "S": "S+1",
   "AP": "-1",
   "rules": [
-   "Amour Bane (1)",
+   "Armour Bane (1)",
    "Flaming Attacks",
    "Magical Attacks"
   ],
