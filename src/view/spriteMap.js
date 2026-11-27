@@ -6,8 +6,70 @@ import { combatWeaponChoices } from '../rules/weaponChoice.js'
 
 const ROLE_SUFFIX = { champion: '-champion', standard: '-standard', musician: '-musician', rank: '' }
 
+// A character whose own picture shows it on the mount it bought, checked before every other rule:
+// [army, pattern on the entry id, pattern on the mount (the choice's name, then the mount's and the chariot's), family].
+// First match wins, so a Royal Griffon row comes before the plain Griffon row (the Griffon choice rides a mount named
+// "Royal Griffon": the patterns that need the choice itself start with ^).
+const CHARACTER_MOUNT = [
+  // the Concord Realm
+  ['concord-realm', /^general-of-the-realm$/, /^royal griffon/, 'emp-general-royal-griffon'],
+  ['concord-realm', /^(general|captain)-of-the-realm$/, /griffon/, 'emp-general-griffon'],
+  ['concord-realm', /^wizard-lord$/, /griffon/, 'emp-wizard-lord-royal-griffon'],
+  ['concord-realm', /^(wizard-lord|master-mage)$/, /pegasus/, 'emp-pegasus-wizard'],
+  ['concord-realm', /./, /pegasus/, 'emp-pegasus-captain'],
+  // the Ashforged
+  ['ashforged', /^(sorcerer-prophet|bindsmith-sorcerer)$/, /bale taurus/, 'cd-sorcerer-bale-taurus'],
+  ['ashforged', /^(sorcerer-prophet|bindsmith-sorcerer)$/, /great taurus/, 'cd-sorcerer-great-taurus'],
+  ['ashforged', /^(sorcerer-prophet|bindsmith-sorcerer)$/, /lammasu/, 'cd-sorcerer-lammasu'],
+  ['ashforged', /^infernal-(castellan|seneschal)$/, /bale taurus/, 'cd-castellan-bale-taurus'],
+  ['ashforged', /^infernal-(castellan|seneschal)$/, /great taurus/, 'cd-castellan-great-taurus'],
+  // the Ilthari Realms (the Storm Weaver rides the mage's Unicorn)
+  ['ilthari-realms', /^(prince|noble)$/, /great eagle/, 'he-noble-great-eagle'],
+  ['ilthari-realms', /^(prince|noble)$/, /griffon/, 'he-noble-griffon'],
+  ['ilthari-realms', /^(archmage|mage)$/, /great eagle/, 'he-mage-great-eagle'],
+  ['ilthari-realms', /./, /unicorn/, 'he-mage-unicorn'],
+  // the Jade Dominion of Shen
+  ['jade-dominion-of-shen', /^lianshi(-lord)?$/, /longma/, 'gc-longma-rider'],
+  // the Kingdom of Lyonne: Royal Pegasus before the plain Pegasus
+  ['kingdom-of-lyonne', /^(duke|baron)$/, /hippogryph/, 'brt-lord-hippogryph'],
+  ['kingdom-of-lyonne', /^(duke|baron|paladin)$/, /royal pegasus/, 'brt-lord-royal-pegasus'],
+  ['kingdom-of-lyonne', /^(duke|baron|paladin)$/, /pegasus/, 'brt-lord-pegasus'],
+  ['kingdom-of-lyonne', /^prophetess$/, /pegasus/, 'brt-prophetess-pegasus'],
+  ['kingdom-of-lyonne', /^prophetess$/, /unicorn/, 'brt-prophetess-unicorn'],
+  ['kingdom-of-lyonne', /^prophetess$/, /horse/, 'brt-prophetess-warhorse'],
+  ['kingdom-of-lyonne', /^damsel$/, /unicorn/, 'brt-damsel-unicorn'],
+  ['kingdom-of-lyonne', /^damsel$/, /horse/, 'brt-damsel-warhorse'],
+  // the Lornefolk of Lorne Wood
+  ['lornefolk-of-lorne-wood', /^grove-(lord|captain)$/, /great stag/, 'we-lord-great-stag'],
+  ['lornefolk-of-lorne-wood', /^grove-(lord|captain)$/, /great eagle/, 'we-lord-great-eagle'],
+  ['lornefolk-of-lorne-wood', /weavesinger$/, /unicorn/, 'we-weavesinger-unicorn'],
+  ['lornefolk-of-lorne-wood', /weavesinger$/, /great eagle/, 'we-weavesinger-great-eagle'],
+  // the Sand Kings of Kheshet
+  ['sand-kings-of-kheshet', /^sand-king$/, /bone dragon/, 'tk-king-bone-dragon'],
+  ['sand-kings-of-kheshet', /^high-priest$/, /bone dragon/, 'tk-priest-bone-dragon'],
+  // the Vhar
+  ['vhar', /^vhar-(dreadlord|master)$/, /dark pegasus/, 'de-lord-dark-pegasus'],
+  ['vhar', /sorceress$/, /dark pegasus/, 'de-sorceress-dark-pegasus'],
+  ['vhar', /^vhar-dreadlord$/, /manticore/, 'de-lord-manticore'],
+  ['vhar', /^high-beastmaster$/, /manticore/, 'de-beastmaster-manticore'],
+  ['vhar', /^high-beastmaster$/, /lashrunner/, 'de-beastmaster-lashrunner'],
+  // the Deephold Clans (the Oathstone is only a mount choice: no unit.mount)
+  ['deephold-clans', /^king$/, /oathstone/, 'dw-king-oathstone'],
+  ['deephold-clans', /^thane$/, /oathstone/, 'dw-thane-oathstone'],
+  ['deephold-clans', /^king$/, /shieldbearers/, 'dw-king-shieldbearers'],
+  // the Unmade
+  ['the-unmade', /^unmade-herald-of-wrath$/, /juggernaut/, 'dc-wrath-herald-juggernaut'],
+  ['the-unmade', /^unmade-herald-of-endurance$/, /palanquin/, 'dc-endurance-herald-palanquin']
+]
+
 function family (unit) {
   const e = unit.entryId
+  if ((unit.troopType || []).includes('Character') && (unit.mount || unit.chariotMount || unit.mountChoice)) {
+    const m = [unit.mountChoice, unit.mount?.name, unit.chariotMount].filter(Boolean).join(' | ').toLowerCase()
+    const hit = CHARACTER_MOUNT.find(([army, re, mre]) => army === unit.army && re.test(e) && mre.test(m))
+    // (a Griffon bought with two heads keeps its two-headed picture)
+    if (hit && !(/griffon/.test(m) && /two heads/i.test((unit.options || []).join(', ')))) return hit[3]
+  }
   // a mounted character wears its army's mounted champion (a knight, a boar lad, a wolf rider)
   // a Dominion character in a Dominion, Chosen or Bloodbeast chariot rides that chariot's own picture
   if (unit.chariotMount && unit.army === 'dominion-hosts') {

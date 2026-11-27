@@ -13882,5 +13882,383 @@
   ],
   "kind": "model",
   "overhang": 1.6
+ },
+ "dw-emp-pegasus-captain": {
+  "file": "dw-emp-pegasus-captain.png",
+  "baseMm": [
+   30,
+   60
+  ],
+  "kind": "model",
+  "overhang": 1.6
+ },
+ "dw-emp-pegasus-wizard": {
+  "file": "dw-emp-pegasus-wizard.png",
+  "baseMm": [
+   30,
+   60
+  ],
+  "kind": "model",
+  "overhang": 1.6
+ },
+ "dw-emp-general-griffon": {
+  "file": "dw-emp-general-griffon.png",
+  "baseMm": [
+   50,
+   50
+  ],
+  "kind": "model",
+  "overhang": 1.6
+ },
+ "dw-emp-general-royal-griffon": {
+  "file": "dw-emp-general-royal-griffon.png",
+  "baseMm": [
+   50,
+   100
+  ],
+  "kind": "model",
+  "overhang": 1.3
+ },
+ "dw-emp-wizard-lord-royal-griffon": {
+  "file": "dw-emp-wizard-lord-royal-griffon.png",
+  "baseMm": [
+   50,
+   100
+  ],
+  "kind": "model",
+  "overhang": 1.3
+ },
+ "dw-cd-sorcerer-bale-taurus": {
+  "file": "dw-cd-sorcerer-bale-taurus.png",
+  "baseMm": [
+   50,
+   100
+  ],
+  "kind": "model",
+  "overhang": 1.3
+ },
+ "dw-cd-sorcerer-great-taurus": {
+  "file": "dw-cd-sorcerer-great-taurus.png",
+  "baseMm": [
+   50,
+   50
+  ],
+  "kind": "model",
+  "overhang": 1.6
+ },
+ "dw-cd-sorcerer-lammasu": {
+  "file": "dw-cd-sorcerer-lammasu.png",
+  "baseMm": [
+   50,
+   50
+  ],
+  "kind": "model",
+  "overhang": 1.6
+ },
+ "dw-cd-castellan-bale-taurus": {
+  "file": "dw-cd-castellan-bale-taurus.png",
+  "baseMm": [
+   50,
+   100
+  ],
+  "kind": "model",
+  "overhang": 1.3
+ },
+ "dw-cd-castellan-great-taurus": {
+  "file": "dw-cd-castellan-great-taurus.png",
+  "baseMm": [
+   50,
+   50
+  ],
+  "kind": "model",
+  "overhang": 1.6
+ },
+ "dw-he-noble-great-eagle": {
+  "file": "dw-he-noble-great-eagle.png",
+  "baseMm": [
+   40,
+   40
+  ],
+  "kind": "model",
+  "overhang": 1.8
+ },
+ "dw-he-noble-griffon": {
+  "file": "dw-he-noble-griffon.png",
+  "baseMm": [
+   50,
+   50
+  ],
+  "kind": "model",
+  "overhang": 1.8
+ },
+ "dw-he-mage-great-eagle": {
+  "file": "dw-he-mage-great-eagle.png",
+  "baseMm": [
+   40,
+   40
+  ],
+  "kind": "model",
+  "overhang": 1.8
+ },
+ "dw-he-mage-unicorn": {
+  "file": "dw-he-mage-unicorn.png",
+  "baseMm": [
+   30,
+   60
+  ],
+  "kind": "model",
+  "overhang": 1.6
+ },
+ "dw-gc-longma-rider": {
+  "file": "dw-gc-longma-rider.png",
+  "baseMm": [
+   30,
+   60
+  ],
+  "kind": "model",
+  "overhang": 1.6
+ },
+ "dw-brt-lord-hippogryph": {
+  "file": "dw-brt-lord-hippogryph.png",
+  "baseMm": [
+   50,
+   50
+  ],
+  "kind": "model",
+  "overhang": 1.6
+ },
+ "dw-brt-lord-pegasus": {
+  "file": "dw-brt-lord-pegasus.png",
+  "baseMm": [
+   40,
+   40
+  ],
+  "kind": "model",
+  "overhang": 1.6
+ },
+ "dw-brt-lord-royal-pegasus": {
+  "file": "dw-brt-lord-royal-pegasus.png",
+  "baseMm": [
+   50,
+   50
+  ],
+  "kind": "model",
+  "overhang": 1.6
+ },
+ "dw-brt-prophetess-pegasus": {
+  "file": "dw-brt-prophetess-pegasus.png",
+  "baseMm": [
+   40,
+   40
+  ],
+  "kind": "model",
+  "overhang": 1.6
+ },
+ "dw-brt-prophetess-warhorse": {
+  "file": "dw-brt-prophetess-warhorse.png",
+  "baseMm": [
+   30,
+   60
+  ],
+  "kind": "model",
+  "overhang": 1.6
+ },
+ "dw-brt-prophetess-unicorn": {
+  "file": "dw-brt-prophetess-unicorn.png",
+  "baseMm": [
+   40,
+   60
+  ],
+  "kind": "model",
+  "overhang": 1.6
+ },
+ "dw-brt-damsel-warhorse": {
+  "file": "dw-brt-damsel-warhorse.png",
+  "baseMm": [
+   30,
+   60
+  ],
+  "kind": "model",
+  "overhang": 1.6
+ },
+ "dw-brt-damsel-unicorn": {
+  "file": "dw-brt-damsel-unicorn.png",
+  "baseMm": [
+   30,
+   60
+  ],
+  "kind": "model",
+  "overhang": 1.6
+ },
+ "dw-we-lord-great-stag": {
+  "file": "dw-we-lord-great-stag.png",
+  "baseMm": [
+   50,
+   50
+  ],
+  "kind": "model",
+  "overhang": 1.6
+ },
+ "dw-we-lord-great-eagle": {
+  "file": "dw-we-lord-great-eagle.png",
+  "baseMm": [
+   40,
+   40
+  ],
+  "kind": "model",
+  "overhang": 1.8
+ },
+ "dw-we-weavesinger-unicorn": {
+  "file": "dw-we-weavesinger-unicorn.png",
+  "baseMm": [
+   30,
+   60
+  ],
+  "kind": "model",
+  "overhang": 1.6
+ },
+ "dw-we-weavesinger-great-eagle": {
+  "file": "dw-we-weavesinger-great-eagle.png",
+  "baseMm": [
+   40,
+   40
+  ],
+  "kind": "model",
+  "overhang": 1.8
+ },
+ "dw-tk-king-bone-dragon": {
+  "file": "dw-tk-king-bone-dragon.png",
+  "baseMm": [
+   100,
+   150
+  ],
+  "kind": "model",
+  "overhang": 1.3
+ },
+ "dw-tk-priest-bone-dragon": {
+  "file": "dw-tk-priest-bone-dragon.png",
+  "baseMm": [
+   100,
+   150
+  ],
+  "kind": "model",
+  "overhang": 1.3
+ },
+ "dw-de-lord-dark-pegasus": {
+  "file": "dw-de-lord-dark-pegasus.png",
+  "baseMm": [
+   30,
+   60
+  ],
+  "kind": "model",
+  "overhang": 1.6
+ },
+ "dw-de-sorceress-dark-pegasus": {
+  "file": "dw-de-sorceress-dark-pegasus.png",
+  "baseMm": [
+   30,
+   60
+  ],
+  "kind": "model",
+  "overhang": 1.6
+ },
+ "dw-de-lord-manticore": {
+  "file": "dw-de-lord-manticore.png",
+  "baseMm": [
+   50,
+   50
+  ],
+  "kind": "model",
+  "overhang": 1.8
+ },
+ "dw-de-beastmaster-manticore": {
+  "file": "dw-de-beastmaster-manticore.png",
+  "baseMm": [
+   50,
+   50
+  ],
+  "kind": "model",
+  "overhang": 1.8
+ },
+ "dw-de-beastmaster-lashrunner": {
+  "file": "dw-de-beastmaster-lashrunner.png",
+  "baseMm": [
+   50,
+   100
+  ],
+  "kind": "model",
+  "overhang": 1.3
+ },
+ "dw-dw-king-oathstone": {
+  "file": "dw-dw-king-oathstone.png",
+  "baseMm": [
+   25,
+   25
+  ],
+  "kind": "model",
+  "overhang": 1.6
+ },
+ "dw-dw-king-oathstone-great": {
+  "file": "dw-dw-king-oathstone-great.png",
+  "baseMm": [
+   25,
+   25
+  ],
+  "kind": "model",
+  "overhang": 1.6
+ },
+ "dw-dw-thane-oathstone": {
+  "file": "dw-dw-thane-oathstone.png",
+  "baseMm": [
+   25,
+   25
+  ],
+  "kind": "model",
+  "overhang": 1.6
+ },
+ "dw-dw-thane-oathstone-great": {
+  "file": "dw-dw-thane-oathstone-great.png",
+  "baseMm": [
+   25,
+   25
+  ],
+  "kind": "model",
+  "overhang": 1.6
+ },
+ "dw-dw-king-shieldbearers": {
+  "file": "dw-dw-king-shieldbearers.png",
+  "baseMm": [
+   25,
+   50
+  ],
+  "kind": "model",
+  "overhang": 1.6
+ },
+ "dw-dw-king-shieldbearers-great": {
+  "file": "dw-dw-king-shieldbearers-great.png",
+  "baseMm": [
+   25,
+   50
+  ],
+  "kind": "model",
+  "overhang": 1.6
+ },
+ "dw-dc-wrath-herald-juggernaut": {
+  "file": "dw-dc-wrath-herald-juggernaut.png",
+  "baseMm": [
+   50,
+   50
+  ],
+  "kind": "model",
+  "overhang": 1.6
+ },
+ "dw-dc-endurance-herald-palanquin": {
+  "file": "dw-dc-endurance-herald-palanquin.png",
+  "baseMm": [
+   40,
+   40
+  ],
+  "kind": "model",
+  "overhang": 1.6
  }
 }
