@@ -28,7 +28,10 @@ const K = 3   // screen pixels a picture pixel
 // After the last cue (the buttons, 2:27) the picture goes on behind the menu: space, drifting,
 // until the menu is left.
 
-export function introWanted () { return new URLSearchParams(location.search).get('intro') !== 'off' }
+// (not on the reload that brings a finished battle back to the menu, ui/battle.js: the flag is read once)
+let backFromBattle = false
+try { backFromBattle = sessionStorage.getItem('dw.skipIntro') === '1'; sessionStorage.removeItem('dw.skipIntro') } catch {}
+export function introWanted () { return !backFromBattle && new URLSearchParams(location.search).get('intro') !== 'off' }
 // ?intro=freeze:N holds the picture still at N seconds (for checking a passing moment, a flash)
 function frozenSecond () {
   const asked = /^freeze:(\d+(?:\.\d+)?)$/.exec(new URLSearchParams(location.search).get('intro') ?? '')

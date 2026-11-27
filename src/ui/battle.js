@@ -162,6 +162,10 @@ export async function startBattleScreen (game, { onLeave }) {
     diceStrip.stop()
     window.removeEventListener('keydown', onKey)
     board.destroy()
+    // Back to the menu the way Void Wars does it: the page starts again, so nothing the battle drew, timed or
+    // listened for can outlive it (leaving in place showed a black screen in some browsers). The intro is
+    // not played again on that reload (ui/intro.js introWanted).
+    try { sessionStorage.setItem('dw.skipIntro', '1'); location.assign(location.pathname); return } catch {}
     onLeave()
   }
   function confirmLeave () { return game.phase === 'over' || window.confirm('Leave this battle? It is not saved.') }

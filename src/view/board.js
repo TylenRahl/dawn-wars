@@ -24,21 +24,32 @@ export async function createBoard (host, game, handlers) {
   host.append(app.canvas)
   app.canvas.addEventListener('contextmenu', e => e.preventDefault())
 
-  // the pictures
+  // the pictures. Only the list is fetched before the table is drawn; each picture is fetched the first time a
+  // model needs it (texture() below), and the table redrawn when it arrives. Fetching all 1,544 first kept the
+  // battle screen empty for minutes online (GitHub Pages), where each picture is its own download.
   let manifest = null
   const textures = {}
-  try {
-    manifest = await (await fetch('/dw/images/manifest.json')).json()
-    await Promise.all(Object.entries(manifest).map(async ([k, v]) => {
-      try {
-        textures[k] = await Assets.load(`/dw/images/${v.file}`)
+  const loading = new Set()
+  try { manifest = await (await fetch('/dw/images/manifest.json')).json() } catch { manifest = null }
+  let redrawSoon = false
+  function texture (key) {
+    if (textures[key]) return textures[key]
+    if (manifest?.[key] && !loading.has(key)) {
+      loading.add(key)
+      Assets.load(`/dw/images/${manifest[key].file}`).then(t => {
+        if (destroyed) return
         // mip levels, so a picture drawn smaller than its pixels can be blended down (pictureFilter below)
-        textures[k].source.autoGenerateMipmaps = true
-        textures[k].source.updateMipmaps()
-        textures[k].source.scaleMode = 'nearest'
-      } catch {}
-    }))
-  } catch { manifest = null }
+        t.source.autoGenerateMipmaps = true
+        t.source.updateMipmaps()
+        t.source.scaleMode = pictureFilter // (the filter the current zoom wants, setPictureFilter below)
+        textures[key] = t
+        // (one redraw for every picture that arrives in the same frame)
+        if (!redrawSoon) { redrawSoon = true; requestAnimationFrame(() => { redrawSoon = false; if (!destroyed) redraw() }) }
+      }).catch(() => {})
+    }
+    return null
+  }
+  let destroyed = false
 
   const world = new Container()
   app.stage.addChild(world)
@@ -181,8 +192,8 @@ export async function createBoard (host, game, handlers) {
   const unitViews = new Map()
   function modelSprite (unit, model, w, d) {
     const key = spriteKey(unit, model, manifest, `${game.round}:${game.active}`)
-    if (key && textures[key]) {
-      const s = new Sprite(textures[key])
+    if (key && texture(key)) {
+      const s = new Sprite(texture(key))
       s.anchor.set(0.5)
       // a TOKEN picture is bigger than its base and spills onto its neighbours (the manifest's
       // 'overhang'); the footprint stays the base
@@ -216,7 +227,7 @@ export async function createBoard (host, game, handlers) {
       const key = crewKey(unit, manifest)
       const n = Math.min(3, unit.crewCount ?? 3)
       for (let i = 0; i < n; i++) {
-        const sp = key && textures[key] ? Object.assign(new Sprite(textures[key]), {}) : new Graphics().rect(-0.5, -0.5, 1, 1).fill(0x555555)
+        const sp = key && texture(key) ? Object.assign(new Sprite(texture(key)), {}) : new Graphics().rect(-0.5, -0.5, 1, 1).fill(0x555555)
         if (sp.anchor) sp.anchor.set(0.5)
         sp.width = unit.crewBase.w; sp.height = unit.crewBase.d
         const back = unit.base.d + unit.crewBase.d / 2 + 0.05
@@ -452,6 +463,7 @@ export async function createBoard (host, game, handlers) {
     // leaving the battle: the table's canvas, its ticker and its window listener go with it, or the next
     // battle's canvas sits behind this one (the old table, or black, showed instead of the new battle)
     destroy () {
+      destroyed = true
       resizer.disconnect()
       window.removeEventListener('pointerup', onPointerUp)
       app.destroy({ removeView: true }, { children: true })
