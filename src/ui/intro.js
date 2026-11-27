@@ -44,7 +44,7 @@ const rgb = h => [1, 3, 5].map(i => parseInt(h.slice(i, i + 2), 16))
 const mixRgb = (a, b, k) => a.map((v, i) => Math.round(v + (b[i] - v) * k))
 const pack = ([r, g, b]) => (0xff000000 | (b << 16) | (g << 8) | r) >>> 0
 
-// `menu` is the #menu section: its title waits under .ow-intro until CUES.title, its buttons
+// `menu` is the #menu section: its title waits under .dw-intro until CUES.title, its buttons
 // until the end. `music` is music.js introSong(). `onDone` when the menu is usable.
 export function playIntro (menu, { music = null, onDone = null } = {}) {
   const canvas = document.createElement('canvas')
@@ -54,7 +54,7 @@ export function playIntro (menu, { music = null, onDone = null } = {}) {
   // the second canvas, at the screen's own resolution, for the scenes made of the game's unit
   // pictures (introScenes.js): at a third of the resolution they would lose their pixels
   const hi = document.createElement('canvas')
-  hi.className = 'ow-intro-canvas ow-intro-hi'
+  hi.className = 'dw-intro-canvas dw-intro-hi'
   canvas.after(hi)
   const h = hi.getContext('2d')
   const sprites = {}

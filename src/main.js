@@ -52,7 +52,7 @@ function setup () {
 // &blue=<army id> / &red=<army id> swaps in that army's built-in list for a side;
 // &bluelist=<name> / &redlist=<name> picks that built-in list by its exact name (a test list: harnesses).
 const q = new URLSearchParams(location.search)
-// no intro will play: the menu (hidden from the first paint by index.html's .ow-intro) is usable at once
+// no intro will play: the menu (hidden from the first paint by index.html's .dw-intro) is usable at once
 if (q.get('battle') === 'default' || !introWanted()) $('menu').classList.remove('dw-intro')
 // ?film: the test match video (ui/film.js) drives the page from the menu; no intro
 if (q.has('film')) $('menu').classList.remove('dw-intro')

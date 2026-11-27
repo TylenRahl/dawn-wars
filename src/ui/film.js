@@ -651,7 +651,7 @@ export async function runFilm ({ q }) {
       for (const n of spec.ticks || []) { const l = tickOf(n); const c = l?.querySelector('input'); if (c && !c.checked) await click(c, 400) }
       // the command group exactly as listed (a default tick that is not wanted is taken off)
       // (each tick rebuilds the panel: the command ticks are found again before every click)
-      const cmdTicks = () => { const sec = [...document.querySelectorAll('.unit-row .ow-section')].find(x => same(x.querySelector('.section-label')?.textContent) === same('Command')); return sec ? [...sec.querySelectorAll('label.tick')] : [] }
+      const cmdTicks = () => { const sec = [...document.querySelectorAll('.unit-row .dw-section')].find(x => same(x.querySelector('.section-label')?.textContent) === same('Command')); return sec ? [...sec.querySelectorAll('label.tick')] : [] }
       for (let k = 0; k < cmdTicks().length; k++) {
         const l = cmdTicks()[k]
         const want = (spec.command || []).some(n => same(l.textContent.trim()).startsWith(same(n)))
