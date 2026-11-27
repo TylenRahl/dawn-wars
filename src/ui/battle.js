@@ -160,11 +160,13 @@ export async function startBattleScreen (game, { onLeave }) {
     if (!confirmLeave()) return
     game.listeners.delete(addLog)
     diceStrip.stop()
+    window.removeEventListener('keydown', onKey)
+    board.destroy()
     onLeave()
   }
   function confirmLeave () { return game.phase === 'over' || window.confirm('Leave this battle? It is not saved.') }
 
-  window.addEventListener('keydown', e => {
+  const onKey = e => {
     if (e.target.tagName === 'INPUT') return
     // (not while How to Play is open over the table)
     if (document.querySelector('.tut-overlay')) return
@@ -172,7 +174,8 @@ export async function startBattleScreen (game, { onLeave }) {
     // Ctrl+Z with no mode: take back the last move (ui/phases.js undoMove); in a move, its last step
     if ((e.ctrlKey || e.metaKey) && (e.key === 'z' || e.key === 'Z') && !ui.mode) { e.preventDefault(); ui.undoMove?.(); return }
     ui.mode?.key?.(e)
-  })
+  }
+  window.addEventListener('keydown', onKey)
 
   // The turn card (top left), the phase stepper under it, and the End button (bottom right).
   // The stepper only shows where the turn is: the four phases of the turn sequence

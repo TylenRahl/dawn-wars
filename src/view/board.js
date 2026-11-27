@@ -388,7 +388,8 @@ export async function createBoard (host, game, handlers) {
     if (measuring) { measuring.to = p; drawTape(); return }
     handlers.move?.(p, e)
   })
-  window.addEventListener('pointerup', e => {
+  // (on the window, so a drag that ends off the table still ends; taken off again by destroy())
+  const onPointerUp = e => {
     if (panning) {
       const wasRight = panning.button === 2 && !panning.moved
       panning = null
@@ -399,7 +400,8 @@ export async function createBoard (host, game, handlers) {
     if (e.target !== canvas) return
     const s = local(e)
     handlers.up?.(toTable(s.x, s.y), e)
-  })
+  }
+  window.addEventListener('pointerup', onPointerUp)
   canvas.addEventListener('wheel', e => {
     e.preventDefault()
     const s = local(e)
@@ -409,7 +411,8 @@ export async function createBoard (host, game, handlers) {
     userZoomed = true
     redraw()
   }, { passive: false })
-  new ResizeObserver(() => { if (!userZoomed) fit(); redraw() }).observe(host)
+  const resizer = new ResizeObserver(() => { if (!userZoomed) fit(); redraw() })
+  resizer.observe(host)
 
   const tape = new Graphics()
   const tapeLabel = new Text({ text: '', style: { fill: 0xffe080, fontSize: 16, fontFamily: 'Georgia', stroke: { color: 0x000000, width: 4 } } })
@@ -446,6 +449,13 @@ export async function createBoard (host, game, handlers) {
   redraw()
   return {
     redraw,
+    // leaving the battle: the table's canvas, its ticker and its window listener go with it, or the next
+    // battle's canvas sits behind this one (the old table, or black, showed instead of the new battle)
+    destroy () {
+      resizer.disconnect()
+      window.removeEventListener('pointerup', onPointerUp)
+      app.destroy({ removeView: true }, { children: true })
+    },
     select (u) { selected = u; redraw() },
     setHighlights (m) { highlights = m; redraw() },
     setGhosts (g) { ghosts = g; redraw() },
