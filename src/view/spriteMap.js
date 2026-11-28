@@ -679,7 +679,7 @@ export function spriteKey (unit, model, manifest, turn = null) {
   // a Gobbler Minder among the Cave Gobblers (units.js: the model's own profile row)
   if (/gobbler minder/i.test(model.name || '') && manifest['dw-og-gobbler-minder']) return 'dw-og-gobbler-minder'
   // a Beast Pack's beasts (rules/beastPack.js), each in its own picture; the Keepers are the unit's own
-  const beast = { 'Shadewood Hound': 'dw-we-hound', 'Forest Cat': 'dw-we-forest-cat', 'Sylvan Boar': 'dw-we-sylvan-boar', 'Bear of Lorne': 'dw-we-bear' }[model.name]
+  const beast = { 'Shadewood Hound': 'dw-we-hound-on-25x50', 'Forest Cat': 'dw-we-forest-cat-on-25x50', 'Sylvan Boar': 'dw-we-sylvan-boar-on-25x50', 'Bear of Lorne': 'dw-we-bear-on-25x50' }[model.name]
   if (beast && manifest[beast]) return beast
   const tries = [`dw-${fam}${ROLE_SUFFIX[model.role] || ''}`, `dw-${fam}`]
   // missile troops have no standard or musician picture; borrow the halberdiers'

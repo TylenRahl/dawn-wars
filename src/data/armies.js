@@ -17816,11 +17816,11 @@ export const ARMIES = {
      "Furious Charge",
      "The Knight's Vow"
     ],
-    "rulesPage": "unit__mounted-knights-of-the-lily.md",
+    "rulesPage": "unit__knights-of-the-lily-on-foot.md",
     "profile": [
      {
       "Name": "Knight of the Lily",
-      "M": "-",
+      "M": "4",
       "WS": "4",
       "BS": "2",
       "S": "3",
@@ -17832,7 +17832,7 @@ export const ARMIES = {
      },
      {
       "Name": "First Knight",
-      "M": "-",
+      "M": "4",
       "WS": "4",
       "BS": "2",
       "S": "3",
@@ -17841,36 +17841,24 @@ export const ARMIES = {
       "I": "3",
       "A": "2",
       "Ld": "8"
-     },
-     {
-      "Name": "Lyonnese Warhorse",
-      "M": "8",
-      "WS": "3",
-      "BS": "-",
-      "S": "3",
-      "T": "-",
-      "W": "-",
-      "I": "3",
-      "A": "1",
-      "Ld": "-"
      }
     ],
     "troopType": [
-     "Heavy Cavalry"
+     "Heavy Infantry"
     ],
     "unitCategory": [
-     "Cavalry"
+     "Infantry"
     ],
     "base": {
      "model": [
-      30,
-      60
+      25,
+      25
      ]
     },
-    "baseText": "30 x 60 mm",
-    "unitSize": "3+",
+    "baseText": "25 x 25 mm",
+    "unitSize": "5+",
     "armourValue": null,
-    "equipmentText": "Knights of the Lily: Hand weapons, lances, heavy armour and shields\nLyonnese Warhorse: Iron-shod hooves (counts as a hand weapon) and barding",
+    "equipmentText": "Knights of the Lily: Hand weapons, heavy armour and shields",
     "specialRules": [
      {
       "name": "Favour of the Mere",
@@ -17881,31 +17869,15 @@ export const ARMIES = {
       "slug": "close-order"
      },
      {
-      "name": "Counter Charge",
-      "slug": "counter-charge"
-     },
-     {
-      "name": "Finest Warhorses",
-      "slug": "finest-warhorses"
-     },
-     {
-      "name": "First Charge",
-      "slug": "first-charge"
-     },
-     {
-      "name": "Lance Formation",
-      "slug": "lance-formation"
-     },
-     {
-      "name": "Swiftstride",
-      "slug": "swiftstride"
+      "name": "Furious Charge",
+      "slug": "furious-charge"
      },
      {
       "name": "The Knight's Vow",
       "slug": "the-knights-vow"
      }
     ],
-    "pageReference": 95
+    "pageReference": 91
    },
    {
     "id": "mounted-knights-of-the-lily",

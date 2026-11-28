@@ -15079,5 +15079,41 @@
   ],
   "kind": "model",
   "overhang": 1.3
+ },
+ "dw-we-hound-on-25x50": {
+  "file": "dw-we-hound-on-25x50.png",
+  "baseMm": [
+   25,
+   50
+  ],
+  "kind": "model",
+  "overhang": 1.6
+ },
+ "dw-we-forest-cat-on-25x50": {
+  "file": "dw-we-forest-cat-on-25x50.png",
+  "baseMm": [
+   25,
+   50
+  ],
+  "kind": "model",
+  "overhang": 1.6
+ },
+ "dw-we-sylvan-boar-on-25x50": {
+  "file": "dw-we-sylvan-boar-on-25x50.png",
+  "baseMm": [
+   25,
+   50
+  ],
+  "kind": "model",
+  "overhang": 1.6
+ },
+ "dw-we-bear-on-25x50": {
+  "file": "dw-we-bear-on-25x50.png",
+  "baseMm": [
+   25,
+   50
+  ],
+  "kind": "model",
+  "overhang": 1.6
  }
 }
