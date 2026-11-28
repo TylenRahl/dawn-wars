@@ -14260,5 +14260,824 @@
   ],
   "kind": "model",
   "overhang": 1.6
+ },
+ "dw-cd-bolt-thrower-on-50x50": {
+  "file": "dw-cd-bolt-thrower-on-50x50.png",
+  "baseMm": [
+   50,
+   50
+  ],
+  "kind": "machine",
+  "overhang": 1.3
+ },
+ "dw-cd-magma-cannon-on-50x100": {
+  "file": "dw-cd-magma-cannon-on-50x100.png",
+  "baseMm": [
+   50,
+   100
+  ],
+  "kind": "machine",
+  "overhang": 1.3
+ },
+ "dw-dw-bolt-thrower-on-50x50": {
+  "file": "dw-dw-bolt-thrower-on-50x50.png",
+  "baseMm": [
+   50,
+   50
+  ],
+  "kind": "machine",
+  "overhang": 1.3
+ },
+ "dw-dw-cannon-on-50x50": {
+  "file": "dw-dw-cannon-on-50x50.png",
+  "baseMm": [
+   50,
+   50
+  ],
+  "kind": "machine",
+  "overhang": 1.3
+ },
+ "dw-dw-organ-gun-on-50x50": {
+  "file": "dw-dw-organ-gun-on-50x50.png",
+  "baseMm": [
+   50,
+   50
+  ],
+  "kind": "machine",
+  "overhang": 1.3
+ },
+ "dw-sk-blightclaw-catapult-on-50x100": {
+  "file": "dw-sk-blightclaw-catapult-on-50x100.png",
+  "baseMm": [
+   50,
+   100
+  ],
+  "kind": "machine",
+  "overhang": 1.3
+ },
+ "dw-sk-sparkwheel-on-50x100": {
+  "file": "dw-sk-sparkwheel-on-50x100.png",
+  "baseMm": [
+   50,
+   100
+  ],
+  "kind": "model",
+  "overhang": 1.3
+ },
+ "dw-sk-wyrd-lightning-cannon-on-50x100": {
+  "file": "dw-sk-wyrd-lightning-cannon-on-50x100.png",
+  "baseMm": [
+   50,
+   100
+  ],
+  "kind": "machine",
+  "overhang": 1.3
+ },
+ "dw-sk-warren-abomination-on-60x100": {
+  "file": "dw-sk-warren-abomination-on-60x100.png",
+  "baseMm": [
+   60,
+   100
+  ],
+  "kind": "model",
+  "overhang": 1.3
+ },
+ "dw-ok-fangcat-on-25x50": {
+  "file": "dw-ok-fangcat-on-25x50.png",
+  "baseMm": [
+   25,
+   50
+  ],
+  "kind": "model",
+  "overhang": 1.6
+ },
+ "dw-ok-frostfang-on-50x100": {
+  "file": "dw-ok-frostfang-on-50x100.png",
+  "baseMm": [
+   50,
+   100
+  ],
+  "kind": "model",
+  "overhang": 1.3
+ },
+ "dw-ok-frostfang-on-50x100-v1": {
+  "file": "dw-ok-frostfang-on-50x100-v1.png",
+  "baseMm": [
+   50,
+   100
+  ],
+  "kind": "model",
+  "overhang": 1.3
+ },
+ "dw-tk-dune-knight-on-50x100": {
+  "file": "dw-tk-dune-knight-on-50x100.png",
+  "baseMm": [
+   50,
+   100
+  ],
+  "kind": "model",
+  "overhang": 1.6
+ },
+ "dw-tk-dune-stalker-on-50x100": {
+  "file": "dw-tk-dune-stalker-on-50x100.png",
+  "baseMm": [
+   50,
+   100
+  ],
+  "kind": "model",
+  "overhang": 1.6
+ },
+ "dw-dc-soul-mill-on-150x100": {
+  "file": "dw-dc-soul-mill-on-150x100.png",
+  "baseMm": [
+   150,
+   100
+  ],
+  "kind": "model",
+  "overhang": 1.3
+ },
+ "dw-de-bloodmire-medusa-on-40x40": {
+  "file": "dw-de-bloodmire-medusa-on-40x40.png",
+  "baseMm": [
+   40,
+   40
+  ],
+  "kind": "model",
+  "overhang": 1.6
+ },
+ "dw-de-bloodmire-shrine-on-60x100": {
+  "file": "dw-de-bloodmire-shrine-on-60x100.png",
+  "baseMm": [
+   60,
+   100
+  ],
+  "kind": "model",
+  "overhang": 1.3
+ },
+ "dw-ok-gulper": {
+  "file": "dw-ok-gulper.png",
+  "baseMm": [
+   40,
+   40
+  ],
+  "kind": "model",
+  "overhang": 1.6
+ },
+ "dw-lz-mirecrawler": {
+  "file": "dw-lz-mirecrawler.png",
+  "baseMm": [
+   50,
+   100
+  ],
+  "kind": "model",
+  "overhang": 1.3
+ },
+ "dw-emp-grand-master": {
+  "file": "dw-emp-grand-master.png",
+  "baseMm": [
+   25,
+   25
+  ],
+  "kind": "model",
+  "overhang": 1.6
+ },
+ "dw-emp-lord-commander": {
+  "file": "dw-emp-lord-commander.png",
+  "baseMm": [
+   25,
+   25
+  ],
+  "kind": "model",
+  "overhang": 1.6
+ },
+ "dw-cd-bull-centaur-hewer": {
+  "file": "dw-cd-bull-centaur-hewer.png",
+  "baseMm": [
+   50,
+   75
+  ],
+  "kind": "model",
+  "overhang": 1.3
+ },
+ "dw-cd-bull-centaur-hewer-v1": {
+  "file": "dw-cd-bull-centaur-hewer-v1.png",
+  "baseMm": [
+   50,
+   75
+  ],
+  "kind": "model",
+  "overhang": 1.3
+ },
+ "dw-cd-bull-centaur-hewer-v2": {
+  "file": "dw-cd-bull-centaur-hewer-v2.png",
+  "baseMm": [
+   50,
+   75
+  ],
+  "kind": "model",
+  "overhang": 1.3
+ },
+ "dw-cd-bull-centaur-hewer-paired": {
+  "file": "dw-cd-bull-centaur-hewer-paired.png",
+  "baseMm": [
+   50,
+   75
+  ],
+  "kind": "model",
+  "overhang": 1.3
+ },
+ "dw-cd-bull-centaur-hewer-paired-v1": {
+  "file": "dw-cd-bull-centaur-hewer-paired-v1.png",
+  "baseMm": [
+   50,
+   75
+  ],
+  "kind": "model",
+  "overhang": 1.3
+ },
+ "dw-cd-bull-centaur-hewer-paired-v2": {
+  "file": "dw-cd-bull-centaur-hewer-paired-v2.png",
+  "baseMm": [
+   50,
+   75
+  ],
+  "kind": "model",
+  "overhang": 1.3
+ },
+ "dw-cd-bull-centaur-hewer-great": {
+  "file": "dw-cd-bull-centaur-hewer-great.png",
+  "baseMm": [
+   50,
+   75
+  ],
+  "kind": "model",
+  "overhang": 1.3
+ },
+ "dw-cd-bull-centaur-hewer-great-v1": {
+  "file": "dw-cd-bull-centaur-hewer-great-v1.png",
+  "baseMm": [
+   50,
+   75
+  ],
+  "kind": "model",
+  "overhang": 1.3
+ },
+ "dw-cd-bull-centaur-hewer-great-v2": {
+  "file": "dw-cd-bull-centaur-hewer-great-v2.png",
+  "baseMm": [
+   50,
+   75
+  ],
+  "kind": "model",
+  "overhang": 1.3
+ },
+ "dw-cd-bull-centaur-hewer-great-shield": {
+  "file": "dw-cd-bull-centaur-hewer-great-shield.png",
+  "baseMm": [
+   50,
+   75
+  ],
+  "kind": "model",
+  "overhang": 1.3
+ },
+ "dw-cd-bull-centaur-hewer-great-shield-v1": {
+  "file": "dw-cd-bull-centaur-hewer-great-shield-v1.png",
+  "baseMm": [
+   50,
+   75
+  ],
+  "kind": "model",
+  "overhang": 1.3
+ },
+ "dw-cd-bull-centaur-hewer-great-shield-v2": {
+  "file": "dw-cd-bull-centaur-hewer-great-shield-v2.png",
+  "baseMm": [
+   50,
+   75
+  ],
+  "kind": "model",
+  "overhang": 1.3
+ },
+ "dw-cd-bull-centaur-hewer-champion": {
+  "file": "dw-cd-bull-centaur-hewer-champion.png",
+  "baseMm": [
+   50,
+   75
+  ],
+  "kind": "model",
+  "overhang": 1.3
+ },
+ "dw-cd-bull-centaur-hewer-standard": {
+  "file": "dw-cd-bull-centaur-hewer-standard.png",
+  "baseMm": [
+   50,
+   75
+  ],
+  "kind": "model",
+  "overhang": 1.3
+ },
+ "dw-cd-bull-centaur-hewer-musician": {
+  "file": "dw-cd-bull-centaur-hewer-musician.png",
+  "baseMm": [
+   50,
+   75
+  ],
+  "kind": "model",
+  "overhang": 1.3
+ },
+ "dw-cd-iron-behemoth-on-60x100": {
+  "file": "dw-cd-iron-behemoth-on-60x100.png",
+  "baseMm": [
+   60,
+   100
+  ],
+  "kind": "model",
+  "overhang": 1.3
+ },
+ "dw-cd-sorcerer-bale-taurus-on-60x100": {
+  "file": "dw-cd-sorcerer-bale-taurus-on-60x100.png",
+  "baseMm": [
+   60,
+   100
+  ],
+  "kind": "model",
+  "overhang": 1.3
+ },
+ "dw-cd-castellan-bale-taurus-on-60x100": {
+  "file": "dw-cd-castellan-bale-taurus-on-60x100.png",
+  "baseMm": [
+   60,
+   100
+  ],
+  "kind": "model",
+  "overhang": 1.3
+ },
+ "dw-emp-general-royal-griffon-on-60x100": {
+  "file": "dw-emp-general-royal-griffon-on-60x100.png",
+  "baseMm": [
+   60,
+   100
+  ],
+  "kind": "model",
+  "overhang": 1.3
+ },
+ "dw-emp-wizard-lord-royal-griffon-on-60x100": {
+  "file": "dw-emp-wizard-lord-royal-griffon-on-60x100.png",
+  "baseMm": [
+   60,
+   100
+  ],
+  "kind": "model",
+  "overhang": 1.3
+ },
+ "dw-ok-junkflinger-on-60x100": {
+  "file": "dw-ok-junkflinger-on-60x100.png",
+  "baseMm": [
+   60,
+   100
+  ],
+  "kind": "model",
+  "overhang": 1.3
+ },
+ "dw-ok-gutcannon-on-60x100": {
+  "file": "dw-ok-gutcannon-on-60x100.png",
+  "baseMm": [
+   60,
+   100
+  ],
+  "kind": "model",
+  "overhang": 1.3
+ },
+ "dw-he-skycutter-on-60x100": {
+  "file": "dw-he-skycutter-on-60x100.png",
+  "baseMm": [
+   60,
+   100
+  ],
+  "kind": "model",
+  "overhang": 1.3
+ },
+ "dw-emp-war-wagon-on-60x100": {
+  "file": "dw-emp-war-wagon-on-60x100.png",
+  "baseMm": [
+   60,
+   100
+  ],
+  "kind": "model",
+  "overhang": 1.3
+ },
+ "dw-emp-pegasus-mage-on-40x60": {
+  "file": "dw-emp-pegasus-mage-on-40x60.png",
+  "baseMm": [
+   40,
+   60
+  ],
+  "kind": "model",
+  "overhang": 1.6
+ },
+ "dw-emp-pegasus-captain-on-40x60": {
+  "file": "dw-emp-pegasus-captain-on-40x60.png",
+  "baseMm": [
+   40,
+   60
+  ],
+  "kind": "model",
+  "overhang": 1.6
+ },
+ "dw-woc-unmade-mount-on-40x60": {
+  "file": "dw-woc-unmade-mount-on-40x60.png",
+  "baseMm": [
+   40,
+   60
+  ],
+  "kind": "model",
+  "overhang": 1.6
+ },
+ "dw-he-mage-unicorn-on-40x60": {
+  "file": "dw-he-mage-unicorn-on-40x60.png",
+  "baseMm": [
+   40,
+   60
+  ],
+  "kind": "model",
+  "overhang": 1.6
+ },
+ "dw-brt-damsel-unicorn-on-40x60": {
+  "file": "dw-brt-damsel-unicorn-on-40x60.png",
+  "baseMm": [
+   40,
+   60
+  ],
+  "kind": "model",
+  "overhang": 1.6
+ },
+ "dw-brt-lord-mounted-on-40x60": {
+  "file": "dw-brt-lord-mounted-on-40x60.png",
+  "baseMm": [
+   40,
+   60
+  ],
+  "kind": "model",
+  "overhang": 1.6
+ },
+ "dw-we-weavesinger-unicorn-on-40x60": {
+  "file": "dw-we-weavesinger-unicorn-on-40x60.png",
+  "baseMm": [
+   40,
+   60
+  ],
+  "kind": "model",
+  "overhang": 1.6
+ },
+ "dw-de-sorceress-dark-pegasus-on-40x60": {
+  "file": "dw-de-sorceress-dark-pegasus-on-40x60.png",
+  "baseMm": [
+   40,
+   60
+  ],
+  "kind": "model",
+  "overhang": 1.6
+ },
+ "dw-de-lord-dark-pegasus-on-40x60": {
+  "file": "dw-de-lord-dark-pegasus-on-40x60.png",
+  "baseMm": [
+   40,
+   60
+  ],
+  "kind": "model",
+  "overhang": 1.6
+ },
+ "dw-brt-pegasus-knight-on-40x60": {
+  "file": "dw-brt-pegasus-knight-on-40x60.png",
+  "baseMm": [
+   40,
+   60
+  ],
+  "kind": "model",
+  "overhang": 1.6
+ },
+ "dw-brt-pegasus-knight-on-40x60-champion": {
+  "file": "dw-brt-pegasus-knight-on-40x60-champion.png",
+  "baseMm": [
+   40,
+   60
+  ],
+  "kind": "model",
+  "overhang": 1.6
+ },
+ "dw-brt-pegasus-knight-on-40x60-standard": {
+  "file": "dw-brt-pegasus-knight-on-40x60-standard.png",
+  "baseMm": [
+   40,
+   60
+  ],
+  "kind": "model",
+  "overhang": 1.6
+ },
+ "dw-brt-pegasus-knight-on-40x60-musician": {
+  "file": "dw-brt-pegasus-knight-on-40x60-musician.png",
+  "baseMm": [
+   40,
+   60
+  ],
+  "kind": "model",
+  "overhang": 1.6
+ },
+ "dw-brt-lord-pegasus-on-40x60": {
+  "file": "dw-brt-lord-pegasus-on-40x60.png",
+  "baseMm": [
+   40,
+   60
+  ],
+  "kind": "model",
+  "overhang": 1.6
+ },
+ "dw-lz-carnosaur-on-50x100": {
+  "file": "dw-lz-carnosaur-on-50x100.png",
+  "baseMm": [
+   50,
+   100
+  ],
+  "kind": "model",
+  "overhang": 1.3
+ },
+ "dw-cd-sorcerer-great-taurus-on-60x100": {
+  "file": "dw-cd-sorcerer-great-taurus-on-60x100.png",
+  "baseMm": [
+   60,
+   100
+  ],
+  "kind": "model",
+  "overhang": 1.3
+ },
+ "dw-cd-castellan-great-taurus-on-60x100": {
+  "file": "dw-cd-castellan-great-taurus-on-60x100.png",
+  "baseMm": [
+   60,
+   100
+  ],
+  "kind": "model",
+  "overhang": 1.3
+ },
+ "dw-cd-sorcerer-lammasu-on-50x75": {
+  "file": "dw-cd-sorcerer-lammasu-on-50x75.png",
+  "baseMm": [
+   50,
+   75
+  ],
+  "kind": "model",
+  "overhang": 1.3
+ },
+ "dw-he-noble-griffon-on-60x100": {
+  "file": "dw-he-noble-griffon-on-60x100.png",
+  "baseMm": [
+   60,
+   100
+  ],
+  "kind": "model",
+  "overhang": 1.3
+ },
+ "dw-de-lord-manticore-on-60x100": {
+  "file": "dw-de-lord-manticore-on-60x100.png",
+  "baseMm": [
+   60,
+   100
+  ],
+  "kind": "model",
+  "overhang": 1.3
+ },
+ "dw-de-beastmaster-manticore-on-60x100": {
+  "file": "dw-de-beastmaster-manticore-on-60x100.png",
+  "baseMm": [
+   60,
+   100
+  ],
+  "kind": "model",
+  "overhang": 1.3
+ },
+ "dw-emp-general-griffon-on-60x100": {
+  "file": "dw-emp-general-griffon-on-60x100.png",
+  "baseMm": [
+   60,
+   100
+  ],
+  "kind": "model",
+  "overhang": 1.3
+ },
+ "dw-dc-wrath-herald-juggernaut-on-50x75": {
+  "file": "dw-dc-wrath-herald-juggernaut-on-50x75.png",
+  "baseMm": [
+   50,
+   75
+  ],
+  "kind": "model",
+  "overhang": 1.3
+ },
+ "dw-cd-groundbreaker-mortar-on-25x25": {
+  "file": "dw-cd-groundbreaker-mortar-on-25x25.png",
+  "baseMm": [
+   25,
+   25
+  ],
+  "kind": "machine",
+  "overhang": 1.8
+ },
+ "dw-ren-bombard-on-25x25": {
+  "file": "dw-ren-bombard-on-25x25.png",
+  "baseMm": [
+   25,
+   25
+  ],
+  "kind": "machine",
+  "overhang": 1.8
+ },
+ "dw-ren-organ-gun-on-50x50": {
+  "file": "dw-ren-organ-gun-on-50x50.png",
+  "baseMm": [
+   50,
+   50
+  ],
+  "kind": "machine",
+  "overhang": 1.3
+ },
+ "dw-tk-urn-of-souls-on-25x25": {
+  "file": "dw-tk-urn-of-souls-on-25x25.png",
+  "baseMm": [
+   25,
+   25
+  ],
+  "kind": "model",
+  "overhang": 1.8
+ },
+ "dw-og-pedal-cart-on-50x100": {
+  "file": "dw-og-pedal-cart-on-50x100.png",
+  "baseMm": [
+   50,
+   100
+  ],
+  "kind": "model",
+  "overhang": 1.3
+ },
+ "dw-dw-king-shieldbearers-on-50x50": {
+  "file": "dw-dw-king-shieldbearers-on-50x50.png",
+  "baseMm": [
+   50,
+   50
+  ],
+  "kind": "model",
+  "overhang": 1.6
+ },
+ "dw-bm-peryton": {
+  "file": "dw-bm-peryton.png",
+  "baseMm": [
+   75,
+   50
+  ],
+  "kind": "model",
+  "overhang": 1.3
+ },
+ "dw-tk-bone-scorpion": {
+  "file": "dw-tk-bone-scorpion.png",
+  "baseMm": [
+   75,
+   50
+  ],
+  "kind": "model",
+  "overhang": 1.3
+ },
+ "dw-tk-chariot-of-the-gods": {
+  "file": "dw-tk-chariot-of-the-gods.png",
+  "baseMm": [
+   100,
+   150
+  ],
+  "kind": "model",
+  "overhang": 1.3
+ },
+ "dw-dc-endurance-beast-on-50x75": {
+  "file": "dw-dc-endurance-beast-on-50x75.png",
+  "baseMm": [
+   50,
+   75
+  ],
+  "kind": "model",
+  "overhang": 1.3
+ },
+ "dw-dc-rapture-fiend-on-50x75": {
+  "file": "dw-dc-rapture-fiend-on-50x75.png",
+  "baseMm": [
+   50,
+   75
+  ],
+  "kind": "model",
+  "overhang": 1.3
+ },
+ "dw-dc-endurance-greater-on-150x100": {
+  "file": "dw-dc-endurance-greater-on-150x100.png",
+  "baseMm": [
+   150,
+   100
+  ],
+  "kind": "model",
+  "overhang": 1.3
+ },
+ "dw-dc-hellflayer": {
+  "file": "dw-dc-hellflayer.png",
+  "baseMm": [
+   100,
+   60
+  ],
+  "kind": "model",
+  "overhang": 1.3
+ },
+ "dw-dc-cipher-herald-disc": {
+  "file": "dw-dc-cipher-herald-disc.png",
+  "baseMm": [
+   50,
+   50
+  ],
+  "kind": "model",
+  "overhang": 1.6
+ },
+ "dw-dc-rapture-herald-steed": {
+  "file": "dw-dc-rapture-herald-steed.png",
+  "baseMm": [
+   30,
+   60
+  ],
+  "kind": "model",
+  "overhang": 1.6
+ },
+ "dw-vc-blood-count-abyssal-terror": {
+  "file": "dw-vc-blood-count-abyssal-terror.png",
+  "baseMm": [
+   50,
+   100
+  ],
+  "kind": "model",
+  "overhang": 1.3
+ },
+ "dw-vc-necromancer-abyssal-terror": {
+  "file": "dw-vc-necromancer-abyssal-terror.png",
+  "baseMm": [
+   50,
+   100
+  ],
+  "kind": "model",
+  "overhang": 1.3
+ },
+ "dw-vc-ghoul-king-dreadwing": {
+  "file": "dw-vc-ghoul-king-dreadwing.png",
+  "baseMm": [
+   100,
+   150
+  ],
+  "kind": "model",
+  "overhang": 1.3
+ },
+ "dw-og-titch-nosher": {
+  "file": "dw-og-titch-nosher.png",
+  "baseMm": [
+   25,
+   50
+  ],
+  "kind": "model",
+  "overhang": 1.6
+ },
+ "dw-we-beast-keeper-on-25x50": {
+  "file": "dw-we-beast-keeper-on-25x50.png",
+  "baseMm": [
+   25,
+   50
+  ],
+  "kind": "model",
+  "overhang": 1.6
+ },
+ "dw-gc-lianshi-great-longma-on-60x100": {
+  "file": "dw-gc-lianshi-great-longma-on-60x100.png",
+  "baseMm": [
+   60,
+   100
+  ],
+  "kind": "model",
+  "overhang": 1.3
+ },
+ "dw-og-boss-gigantic-spider-on-50x50": {
+  "file": "dw-og-boss-gigantic-spider-on-50x50.png",
+  "baseMm": [
+   50,
+   50
+  ],
+  "kind": "model",
+  "overhang": 1.6
+ },
+ "dw-cd-bull-centaur-ashtaur": {
+  "file": "dw-cd-bull-centaur-ashtaur.png",
+  "baseMm": [
+   50,
+   75
+  ],
+  "kind": "model",
+  "overhang": 1.3
  }
 }

@@ -12,53 +12,66 @@ const ROLE_SUFFIX = { champion: '-champion', standard: '-standard', musician: '-
 // "Royal Griffon": the patterns that need the choice itself start with ^).
 const CHARACTER_MOUNT = [
   // the Concord Realm
-  ['concord-realm', /^general-of-the-realm$/, /^royal griffon/, 'emp-general-royal-griffon'],
-  ['concord-realm', /^(general|captain)-of-the-realm$/, /griffon/, 'emp-general-griffon'],
-  ['concord-realm', /^wizard-lord$/, /griffon/, 'emp-wizard-lord-royal-griffon'],
-  ['concord-realm', /^(wizard-lord|master-mage)$/, /pegasus/, 'emp-pegasus-wizard'],
-  ['concord-realm', /./, /pegasus/, 'emp-pegasus-captain'],
+  ['concord-realm', /^general-of-the-realm$/, /^royal griffon/, 'emp-general-royal-griffon-on-60x100'],
+  ['concord-realm', /^(general|captain)-of-the-realm$/, /griffon/, 'emp-general-griffon-on-60x100'],
+  ['concord-realm', /^wizard-lord$/, /griffon/, 'emp-wizard-lord-royal-griffon-on-60x100'],
+  ['concord-realm', /^(wizard-lord|master-mage)$/, /pegasus/, 'emp-pegasus-mage-on-40x60'],
+  ['concord-realm', /./, /pegasus/, 'emp-pegasus-captain-on-40x60'],
   // the Ashforged
-  ['ashforged', /^(sorcerer-prophet|bindsmith-sorcerer)$/, /bale taurus/, 'cd-sorcerer-bale-taurus'],
-  ['ashforged', /^(sorcerer-prophet|bindsmith-sorcerer)$/, /great taurus/, 'cd-sorcerer-great-taurus'],
-  ['ashforged', /^(sorcerer-prophet|bindsmith-sorcerer)$/, /lammasu/, 'cd-sorcerer-lammasu'],
-  ['ashforged', /^infernal-(castellan|seneschal)$/, /bale taurus/, 'cd-castellan-bale-taurus'],
-  ['ashforged', /^infernal-(castellan|seneschal)$/, /great taurus/, 'cd-castellan-great-taurus'],
+  ['ashforged', /^(sorcerer-prophet|bindsmith-sorcerer)$/, /bale taurus/, 'cd-sorcerer-bale-taurus-on-60x100'],
+  ['ashforged', /^(sorcerer-prophet|bindsmith-sorcerer)$/, /great taurus/, 'cd-sorcerer-great-taurus-on-60x100'],
+  ['ashforged', /^(sorcerer-prophet|bindsmith-sorcerer)$/, /lammasu/, 'cd-sorcerer-lammasu-on-50x75'],
+  ['ashforged', /^infernal-(castellan|seneschal)$/, /bale taurus/, 'cd-castellan-bale-taurus-on-60x100'],
+  ['ashforged', /^infernal-(castellan|seneschal)$/, /great taurus/, 'cd-castellan-great-taurus-on-60x100'],
   // the Ilthari Realms (the Storm Weaver rides the mage's Unicorn)
   ['ilthari-realms', /^(prince|noble)$/, /great eagle/, 'he-noble-great-eagle'],
-  ['ilthari-realms', /^(prince|noble)$/, /griffon/, 'he-noble-griffon'],
+  ['ilthari-realms', /^(prince|noble)$/, /griffon/, 'he-noble-griffon-on-60x100'],
   ['ilthari-realms', /^(archmage|mage)$/, /great eagle/, 'he-mage-great-eagle'],
-  ['ilthari-realms', /./, /unicorn/, 'he-mage-unicorn'],
+  ['ilthari-realms', /./, /unicorn/, 'he-mage-unicorn-on-40x60'],
   // the Jade Dominion of Shen
-  ['jade-dominion-of-shen', /^lianshi(-lord)?$/, /longma/, 'gc-longma-rider'],
+  ['jade-dominion-of-shen', /^lianshi(-lord)?$/, /longma/, 'gc-lianshi-great-longma-on-60x100'],
   // the Kingdom of Lyonne: Royal Pegasus before the plain Pegasus
   ['kingdom-of-lyonne', /^(duke|baron)$/, /hippogryph/, 'brt-lord-hippogryph'],
   ['kingdom-of-lyonne', /^(duke|baron|paladin)$/, /royal pegasus/, 'brt-lord-royal-pegasus'],
-  ['kingdom-of-lyonne', /^(duke|baron|paladin)$/, /pegasus/, 'brt-lord-pegasus'],
+  ['kingdom-of-lyonne', /^(duke|baron|paladin)$/, /pegasus/, 'brt-lord-pegasus-on-40x60'],
   ['kingdom-of-lyonne', /^prophetess$/, /pegasus/, 'brt-prophetess-pegasus'],
   ['kingdom-of-lyonne', /^prophetess$/, /unicorn/, 'brt-prophetess-unicorn'],
   ['kingdom-of-lyonne', /^prophetess$/, /horse/, 'brt-prophetess-warhorse'],
-  ['kingdom-of-lyonne', /^damsel$/, /unicorn/, 'brt-damsel-unicorn'],
+  ['kingdom-of-lyonne', /^damsel$/, /unicorn/, 'brt-damsel-unicorn-on-40x60'],
   ['kingdom-of-lyonne', /^damsel$/, /horse/, 'brt-damsel-warhorse'],
   // the Lornefolk of Lorne Wood
   ['lornefolk-of-lorne-wood', /^grove-(lord|captain)$/, /great stag/, 'we-lord-great-stag'],
   ['lornefolk-of-lorne-wood', /^grove-(lord|captain)$/, /great eagle/, 'we-lord-great-eagle'],
-  ['lornefolk-of-lorne-wood', /weavesinger$/, /unicorn/, 'we-weavesinger-unicorn'],
+  ['lornefolk-of-lorne-wood', /weavesinger$/, /unicorn/, 'we-weavesinger-unicorn-on-40x60'],
   ['lornefolk-of-lorne-wood', /weavesinger$/, /great eagle/, 'we-weavesinger-great-eagle'],
   // the Sand Kings of Kheshet
   ['sand-kings-of-kheshet', /^sand-king$/, /bone dragon/, 'tk-king-bone-dragon'],
   ['sand-kings-of-kheshet', /^high-priest$/, /bone dragon/, 'tk-priest-bone-dragon'],
   // the Vhar
-  ['vhar', /^vhar-(dreadlord|master)$/, /dark pegasus/, 'de-lord-dark-pegasus'],
-  ['vhar', /sorceress$/, /dark pegasus/, 'de-sorceress-dark-pegasus'],
-  ['vhar', /^vhar-dreadlord$/, /manticore/, 'de-lord-manticore'],
-  ['vhar', /^high-beastmaster$/, /manticore/, 'de-beastmaster-manticore'],
+  ['vhar', /^vhar-(dreadlord|master)$/, /dark pegasus/, 'de-lord-dark-pegasus-on-40x60'],
+  ['vhar', /sorceress$/, /dark pegasus/, 'de-sorceress-dark-pegasus-on-40x60'],
+  ['vhar', /^vhar-dreadlord$/, /manticore/, 'de-lord-manticore-on-60x100'],
+  ['vhar', /^high-beastmaster$/, /manticore/, 'de-beastmaster-manticore-on-60x100'],
   ['vhar', /^high-beastmaster$/, /lashrunner/, 'de-beastmaster-lashrunner'],
+  // the Kingdom of Lyonne: the lady who rides Aubelune, on her 40 x 60 base
+  ['kingdom-of-lyonne', /^lady-élisse-duachaard$/, /aubelune/, 'brt-lord-mounted-on-40x60'],
+  // the Bloodsworn Courts: the Abyssal Terror and the Dreadwing Colossus, each with its rider
+  ['bloodsworn-courts', /^blood-count$/, /abyssal terror/, 'vc-blood-count-abyssal-terror'],
+  ['bloodsworn-courts', /^master-necromancer$/, /abyssal terror/, 'vc-necromancer-abyssal-terror'],
+  ['bloodsworn-courts', /^gravefiend-ghoul-king$/, /dreadwing colossus/, 'vc-ghoul-king-dreadwing'],
+  // the Rukka Firms: Titch on Nosher, the Nipper bosses on a Gigantic Spider
+  ['rukka-firms', /^titch-toothnicker$/, /nosher/, 'og-titch-nosher'],
+  ['rukka-firms', /^nipper-(gaffer|top-lad)$/, /gigantic spider/, 'og-boss-gigantic-spider-on-50x50'],
+  // the Sand Kings: Amenkhet on the Chariot of the Gods
+  ['sand-kings-of-kheshet', /^amenkhet/, /chariot of the gods/, 'tk-chariot-of-the-gods'],
   // the Deephold Clans (the Oathstone is only a mount choice: no unit.mount)
   ['deephold-clans', /^king$/, /oathstone/, 'dw-king-oathstone'],
   ['deephold-clans', /^thane$/, /oathstone/, 'dw-thane-oathstone'],
-  ['deephold-clans', /^king$/, /shieldbearers/, 'dw-king-shieldbearers'],
+  ['deephold-clans', /^king$/, /shieldbearers/, 'dw-king-shieldbearers-on-50x50'],
   // the Unmade
-  ['the-unmade', /^unmade-herald-of-wrath$/, /juggernaut/, 'dc-wrath-herald-juggernaut'],
+  ['the-unmade', /^unmade-herald-of-wrath$/, /juggernaut/, 'dc-wrath-herald-juggernaut-on-50x75'],
+  ['the-unmade', /^unmade-herald-of-rapture$/, /^steed of rapture/, 'dc-rapture-herald-steed'],
+  ['the-unmade', /^unmade-herald-of-cipher$/, /^disc of cipher/, 'dc-cipher-herald-disc'],
   ['the-unmade', /^unmade-herald-of-endurance$/, /palanquin/, 'dc-endurance-herald-palanquin']
 ]
 
@@ -84,9 +97,9 @@ function family (unit) {
     if (/broodmaw/i.test(c)) return 'og-broodmaw'
     if (/iron rukka/i.test(c)) return 'og-iron-rukka-chariot'
     if (/wolf/i.test(c)) return 'og-wolf-chariot'
-    if (/war wagon|war altar/i.test(c)) return 'emp-war-wagon'   // (no War Altar picture drawn yet: the War Wagon's)
+    if (/war wagon|war altar/i.test(c)) return 'emp-war-wagon-on-60x100'   // (no War Altar picture drawn yet: the War Wagon's)
     if (/lion/i.test(c)) return 'he-lion-chariot'
-    if (/skycutter/i.test(c)) return 'he-skycutter'
+    if (/skycutter/i.test(c)) return 'he-skycutter-on-60x100'
     if (/tiradel/i.test(c)) return 'he-tiradel-chariot'
     if (/lashrunner/i.test(c)) return 'de-lashrunner'
     if (/coldscale/i.test(c)) return 'de-coldone-chariot'
@@ -108,7 +121,7 @@ function family (unit) {
     if (unit.army === 'ilthari-realms' && /emberwing/i.test(unit.mount.name)) return 'he-emberwing-phoenix'
     if (unit.army === 'ilthari-realms' && /rimewing/i.test(unit.mount.name)) return 'he-rimewing-phoenix'
     if (unit.army === 'vhar' && /dragon/i.test(unit.mount.name)) return 'de-black-dragon'
-    if (unit.army === 'saurians' && /carnosaur/i.test(unit.mount.name)) return 'lz-carnosaur'
+    if (unit.army === 'saurians' && /carnosaur/i.test(unit.mount.name)) return 'lz-carnosaur-on-50x100'
     if (unit.army === 'saurians' && /ancient hornback/i.test(unit.mount.name)) return 'lz-ancient-hornback'
     if (unit.army === 'saurians' && /hornback/i.test(unit.mount.name)) return 'lz-beast'
     if (unit.army === 'saurians' && /razorwing/i.test(unit.mount.name)) return 'lz-razorwing'
@@ -127,7 +140,7 @@ function family (unit) {
     if (unit.army === 'broken-crowns') return 'ren-lord-mounted'
     if (unit.army === 'ilthari-realms') return /dragon|phoenix|griffon|eagle/i.test(unit.mount.name) ? 'woc-monster' : 'he-silverhelm-champion'
     // (a Dominion Dragon has two heads; the Manticore its own picture; both with the rider)
-    if (unit.army === 'dominion-hosts') return /dragon/i.test(unit.mount.name) ? 'woc-dominion-dragon-rider' : /manticore/i.test(unit.mount.name) ? 'woc-manticore-rider' : /unmade/i.test(unit.mount.name) ? 'woc-unmade-mount' : 'woc-lord-steed'
+    if (unit.army === 'dominion-hosts') return /dragon/i.test(unit.mount.name) ? 'woc-dominion-dragon-rider' : /manticore/i.test(unit.mount.name) ? 'woc-manticore-rider' : /unmade/i.test(unit.mount.name) ? 'woc-unmade-mount-on-40x60' : 'woc-lord-steed'
     if (unit.army === 'saurians') return /carnosaur|hornback/i.test(unit.mount.name) ? 'lz-beast' : /cliffwing|razorwing/i.test(unit.mount.name) ? 'lz-flyer' : 'lz-coldone-champion'
     if (unit.army === 'sand-kings-of-kheshet') return /sphinx|dragon/i.test(unit.mount.name) ? 'tk-sphinx' : 'tk-horseman-champion'
     if (unit.army === 'bloodsworn-courts') return /dragon|terror|dreadwing|throne|reliquary/i.test(unit.mount.name) ? 'vc-monster' : 'vc-bloodknight-champion'
@@ -145,6 +158,47 @@ function family (unit) {
   }
   const eq = (unit.equipment || '').toLowerCase()
   switch (true) {
+    // ---- pictures drawn on the base the game fields the unit on (copied from the token art, re-laid where the base differs)
+    case e === 'grand-master': return 'emp-grand-master'   // (on foot: a mount bought goes to the mounted picture above)
+    case e === 'lord-commander': return 'emp-lord-commander'
+    case /^hobgoblin-bolt-thrower/.test(e): return 'cd-bolt-thrower-on-50x50'
+    case /^magma-cannon/.test(e): return 'cd-magma-cannon-on-50x100'
+    case /^groundbreaker-mortar/.test(e): return 'cd-groundbreaker-mortar-on-25x25'
+    case /^iron-behemoth/.test(e): return 'cd-iron-behemoth-on-60x100'
+    case /^bull-centaur-hewers/.test(e): return 'cd-bull-centaur-hewer'
+    case e === 'bull-centaur-ashtaur': return 'cd-bull-centaur-ashtaur'
+    case e === 'cannon' && unit.army === 'deephold-clans': return 'dw-cannon-on-50x50'
+    case e === 'bolt-thrower' && unit.army === 'deephold-clans': return 'dw-bolt-thrower-on-50x50'
+    case e === 'organ-gun' && unit.army === 'deephold-clans': return 'dw-organ-gun-on-50x50'
+    case e === 'marchlord-bombard': return 'ren-bombard-on-25x25'
+    case e === 'marchlords-organ-gun': return 'ren-organ-gun-on-50x50'
+    case e === 'war-wagon': return 'emp-war-wagon-on-60x100'
+    case /^blightclaw-catapult/.test(e): return 'sk-blightclaw-catapult-on-50x100'
+    case /^sparkwheel/.test(e): return 'sk-sparkwheel-on-50x100'
+    case /^wyrd-lightning-cannon/.test(e): return 'sk-wyrd-lightning-cannon-on-50x100'
+    case /^warren-abomination/.test(e): return 'sk-warren-abomination-on-60x100'
+    case e === 'fangcat-packs': return 'ok-fangcat-on-25x50'
+    case e === 'frostfang-cavalry': return 'ok-frostfang-on-50x100'
+    case e === 'gorgers': return 'ok-gulper'
+    case e === 'gutcannon': return 'ok-gutcannon-on-60x100'
+    case e === 'grubling-junkflinger': return 'ok-junkflinger-on-60x100'
+    case /^peryton/.test(e): return 'bm-peryton'
+    case /^lumaren-skycutters/.test(e): return 'he-skycutter-on-60x100'
+    case e === 'pegasus-knights': return 'brt-pegasus-knight-on-40x60'
+    case e === 'lornefolk-beast-pack': return 'we-beast-keeper-on-25x50'   // the Beast Keepers (the beasts have their own pictures)
+    case e === 'sniv-pedal-cart': return 'og-pedal-cart-on-50x100'
+    case e === 'urn-of-souls': return 'tk-urn-of-souls-on-25x25'
+    case e === 'dune-knights': return 'tk-dune-knight-on-50x100'
+    case /^dune-stalkers/.test(e): return 'tk-dune-stalker-on-50x100'
+    case /^bone-scorpion/.test(e): return 'tk-bone-scorpion'
+    case /^mirecrawler/.test(e): return 'lz-mirecrawler'
+    case /^beasts-of-endurance/.test(e): return 'dc-endurance-beast-on-50x75'
+    case /^fiends-of-rapture/.test(e): return 'dc-rapture-fiend-on-50x75'
+    case /^great-blighted-one/.test(e): return 'dc-endurance-greater-on-150x100'
+    case /^hellflayer/.test(e): return 'dc-hellflayer'
+    case /^soul-mill/.test(e): return 'dc-soul-mill-on-150x100'
+    case /^bloodmire-shrines/.test(e): return 'de-bloodmire-shrine-on-60x100'
+    case /^bloodmire-medusas/.test(e): return 'de-bloodmire-medusa-on-40x40'
     // ---- the token armies' own pictures
     // the Concord Realm
     case e === 'realm-archers' && unit.army === 'broken-crowns': return 'ren-archer'
@@ -611,7 +665,7 @@ function family (unit) {
 }
 
 // (the token armies' own machines, with crews of their own army)
-const CREW2 = { 'emp-rocket-battery': 'emp-artillery-crew', 'ren-mortar': 'emp-artillery-crew', 'ren-bombard': 'emp-artillery-crew', 'he-bolt-thrower': 'he-crew', 'gc-grand-cannon': 'gc-levy', 'gc-fire-rain': 'gc-levy', 'cd-bolt-thrower': 'cd-hobgoblin', 'cd-deathshrieker': 'cd-hobgoblin', 'cd-groundbreaker-mortar': 'cd-hobgoblin', 'cd-magma-cannon': 'cd-hobgoblin', 'de-reaper': 'de-warrior', 'sk-plagueclaw': 'sk-slave', 'sk-wyrd-lightning-cannon': 'sk-slave', 'tk-catapult': 'tk-skeleton' }
+const CREW2 = { 'emp-rocket-battery': 'emp-artillery-crew', 'ren-mortar': 'emp-artillery-crew', 'ren-bombard': 'emp-artillery-crew', 'he-bolt-thrower': 'he-crew', 'gc-grand-cannon': 'gc-levy', 'gc-fire-rain': 'gc-levy', 'cd-bolt-thrower': 'cd-hobgoblin', 'cd-deathshrieker': 'cd-hobgoblin', 'cd-groundbreaker-mortar': 'cd-hobgoblin', 'cd-magma-cannon': 'cd-hobgoblin', 'de-reaper': 'de-warrior', 'sk-plagueclaw': 'sk-slave', 'sk-wyrd-lightning-cannon': 'sk-slave', 'tk-catapult': 'tk-skeleton', 'cd-bolt-thrower-on-50x50': 'cd-hobgoblin', 'cd-groundbreaker-mortar-on-25x25': 'cd-hobgoblin', 'cd-magma-cannon-on-50x100': 'cd-hobgoblin', 'ren-bombard-on-25x25': 'emp-artillery-crew', 'ren-organ-gun-on-50x50': 'emp-artillery-crew', 'sk-blightclaw-catapult-on-50x100': 'sk-slave', 'sk-wyrd-lightning-cannon-on-50x100': 'sk-slave' }
 export const CREW = { ...CREW2, 'brt-trebuchet': 'brt-peasant-crew', 'emp-thunderclap': 'emp-artillery-crew', 'emp-great-cannon': 'emp-artillery-crew', 'emp-mortar': 'emp-artillery-crew', 'og-rock-chucka': 'og-nipper-crew', 'og-bolt-chucka': 'og-nipper-crew', 'ren-organ-gun': 'emp-artillery-crew', 'dw-flame-cannon': 'dw-crew', 'dw-nipper-hewer': 'dw-slayer', 'dw-anvil': 'dw-kingshammer', 'og-flung-nipper': 'og-nipper-crew' }
 
 // The manifest key for one model of a unit, falling back from the role's own picture to the

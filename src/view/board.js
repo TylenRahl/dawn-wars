@@ -198,7 +198,14 @@ export async function createBoard (host, game, handlers) {
       // a TOKEN picture is bigger than its base and spills onto its neighbours (the manifest's
       // 'overhang'); the footprint stays the base
       const ov = manifest[key]?.overhang || 1
-      s.width = w * ov; s.height = d * ov
+      // A picture drawn for another base shape than the one the unit stands on (a dragon drawn on 60x100mm fielded
+      // on 50x50mm) keeps its own proportions instead of being squashed onto the base: it covers the same area as the
+      // base, centred on it. On the base it was drawn for this is exactly the base size.
+      const mm = manifest[key]?.baseMm
+      if (mm && mm[0] > 0 && mm[1] > 0) {
+        const k = Math.sqrt((w * d) / (mm[0] * mm[1]))
+        s.width = mm[0] * k * ov; s.height = mm[1] * k * ov
+      } else { s.width = w * ov; s.height = d * ov }
       return s
     }
     const g = new Graphics()
